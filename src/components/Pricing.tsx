@@ -1,8 +1,10 @@
 'use client';
 
+import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Check, Download, Sparkles } from 'lucide-react';
-import WaitlistForm from './WaitlistForm';
+import { Check, Download, Sparkles, Loader2 } from 'lucide-react';
+
+const SUPABASE_URL = 'https://usvlgqtbvsnuiefvpoda.supabase.co/functions/v1';
 
 const plans = [
   {
@@ -19,28 +21,73 @@ const plans = [
     cta: 'Install Now',
     ctaLink: '#', // Chrome Web Store link will go here
     highlighted: false,
+    plan: null,
   },
   {
-    name: 'Pro',
-    price: '$30',
-    period: '/yr or $5/mo',
-    description: 'For parents who want everything',
+    name: 'Pro Monthly',
+    price: '$5',
+    period: '/month',
+    description: 'Flexible month-to-month',
     features: [
       'Unlimited downloads',
       'Batch download entire games',
       'Download by player filter',
       'Priority support',
     ],
-    cta: 'Join Waitlist',
-    ctaLink: null, // Uses waitlist form
+    cta: 'Get Pro Monthly',
+    ctaLink: null,
+    highlighted: false,
+    plan: 'monthly',
+  },
+  {
+    name: 'Pro Yearly',
+    price: '$29',
+    period: '/year',
+    badge: 'Save 52%',
+    description: 'Best value for the season',
+    features: [
+      'Unlimited downloads',
+      'Batch download entire games',
+      'Download by player filter',
+      'Priority support',
+    ],
+    cta: 'Get Pro Yearly',
+    ctaLink: null,
     highlighted: true,
+    plan: 'yearly',
   },
 ];
 
 export default function Pricing() {
+  const [loading, setLoading] = useState<string | null>(null);
+
+  const handleCheckout = async (plan: string) => {
+    setLoading(plan);
+    try {
+      const response = await fetch(`${SUPABASE_URL}/create-checkout`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ plan }),
+      });
+
+      const data = await response.json();
+
+      if (data.url) {
+        window.location.href = data.url;
+      } else {
+        alert('Error creating checkout session. Please try again.');
+      }
+    } catch (error) {
+      console.error('Checkout error:', error);
+      alert('Error creating checkout session. Please try again.');
+    } finally {
+      setLoading(null);
+    }
+  };
+
   return (
     <section id="pricing" className="py-20 bg-white">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -57,7 +104,7 @@ export default function Pricing() {
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+        <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
           {plans.map((plan, index) => (
             <motion.div
               key={plan.name}
@@ -65,12 +112,20 @@ export default function Pricing() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              className={`rounded-2xl p-8 ${
+              className={`rounded-2xl p-8 relative ${
                 plan.highlighted
-                  ? 'bg-green-500 text-white ring-4 ring-green-500/20'
+                  ? 'bg-green-500 text-white ring-4 ring-green-500/20 scale-105'
                   : 'bg-gray-50 text-gray-900'
               }`}
             >
+              {plan.badge && (
+                <div className="absolute -top-3 left-1/2 -translate-x-1/2">
+                  <span className="bg-yellow-400 text-yellow-900 text-xs font-bold px-3 py-1 rounded-full">
+                    {plan.badge}
+                  </span>
+                </div>
+              )}
+
               {plan.highlighted && (
                 <div className="flex items-center gap-2 text-green-100 mb-4">
                   <Sparkles className="w-4 h-4" />
@@ -121,9 +176,27 @@ export default function Pricing() {
                   {plan.cta}
                 </a>
               ) : (
-                <div className="flex justify-center">
-                  <WaitlistForm />
-                </div>
+                <button
+                  onClick={() => handleCheckout(plan.plan!)}
+                  disabled={loading !== null}
+                  className={`w-full flex items-center justify-center gap-2 px-6 py-3 rounded-full font-semibold transition-colors disabled:opacity-70 ${
+                    plan.highlighted
+                      ? 'bg-white text-green-600 hover:bg-green-50'
+                      : 'bg-green-500 text-white hover:bg-green-600'
+                  }`}
+                >
+                  {loading === plan.plan ? (
+                    <>
+                      <Loader2 className="w-5 h-5 animate-spin" />
+                      Processing...
+                    </>
+                  ) : (
+                    <>
+                      <Sparkles className="w-5 h-5" />
+                      {plan.cta}
+                    </>
+                  )}
+                </button>
               )}
             </motion.div>
           ))}
@@ -137,7 +210,7 @@ export default function Pricing() {
           transition={{ duration: 0.5, delay: 0.3 }}
           className="text-center text-gray-500 mt-8 text-sm"
         >
-          GameChanger Premium costs $99/year. ClipKeeper Pro is just $30/year to own your
+          GameChanger Premium costs $99/year. ClipKeeper Pro is just $29/year to own your
           memories forever.
         </motion.p>
       </div>
