@@ -3,8 +3,8 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
-  --primary: #22c55e;
-  --primary-dark: #16a34a;
+  --primary: #006554;
+  --primary-dark: #004d3f;
 }
 
 @theme inline {
@@ -14,6 +14,19 @@
   --color-primary-dark: var(--primary-dark);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+
+  /* GameChanger Teal Green palette */
+  --color-green-50: #e6f2f0;
+  --color-green-100: #b3d9d3;
+  --color-green-200: #80c0b5;
+  --color-green-300: #4da798;
+  --color-green-400: #268e7b;
+  --color-green-500: #006554;
+  --color-green-600: #004d3f;
+  --color-green-700: #003d32;
+  --color-green-800: #002d25;
+  --color-green-900: #001d18;
+  --color-green-950: #000e0c;
 }
 
 html {
