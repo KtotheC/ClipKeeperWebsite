@@ -23,11 +23,14 @@ export default function Footer() {
             <a href="/privacy" className="hover:text-white transition-colors">
               Privacy Policy
             </a>
+            <a href="/terms" className="hover:text-white transition-colors">
+              Terms of Service
+            </a>
             <a href="#" className="hover:text-white transition-colors">
               Chrome Web Store
             </a>
             <a
-              href="mailto:support@clipkeeper.app"
+              href="mailto:support@getclipkeeper.com"
               className="hover:text-white transition-colors flex items-center gap-1"
             >
               <Mail className="w-4 h-4" />

@@ -29,7 +29,7 @@ export const metadata: Metadata = {
     title: 'ClipKeeper - Download GameChanger Video Clips',
     description:
       'Download and backup your kids\' GameChanger sports videos. One-click downloads, smart file naming, and batch export.',
-    url: 'https://clipkeeper.app',
+    url: 'https://getclipkeeper.com',
     siteName: 'ClipKeeper',
     type: 'website',
     locale: 'en_US',

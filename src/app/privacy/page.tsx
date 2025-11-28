@@ -178,10 +178,10 @@ export default function PrivacyPolicy() {
           </p>
           <p className="text-gray-600 mb-4">
             <a
-              href="mailto:privacy@clipkeeper.app"
+              href="mailto:privacy@getclipkeeper.com"
               className="text-green-600 hover:underline"
             >
-              privacy@clipkeeper.app
+              privacy@getclipkeeper.com
             </a>
           </p>
         </div>
