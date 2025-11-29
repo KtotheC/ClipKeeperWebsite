@@ -156,17 +156,35 @@ git push  # Auto-deploys on Vercel
 ## Environment Variables
 
 ```env
-# None required for MVP
-# Future: STRIPE_*, EMAIL_SERVICE_API_KEY
+# Local development (stored in .env.local, gitignored)
+SUPABASE_ACCESS_TOKEN=   # For Supabase CLI commands
+```
+
+## Supabase Configuration
+
+- **Project Ref:** `usvlgqtbvsnuiefvpoda`
+- **Edge Functions URL:** `https://usvlgqtbvsnuiefvpoda.supabase.co/functions/v1`
+
+### Edge Function Secrets (managed via Supabase)
+- `STRIPE_SECRET_KEY` - Stripe API secret key
+- `STRIPE_WEBHOOK_SECRET` - Stripe webhook signing secret
+- `STRIPE_MONTHLY_PRICE_ID` - Stripe price ID for monthly plan
+- `STRIPE_YEARLY_PRICE_ID` - Stripe price ID for yearly plan
+
+### Supabase CLI Commands
+```bash
+# List secrets
+SUPABASE_ACCESS_TOKEN=$(grep SUPABASE_ACCESS_TOKEN .env.local | cut -d '=' -f2) npx supabase secrets list --project-ref usvlgqtbvsnuiefvpoda
+
+# Set a secret
+SUPABASE_ACCESS_TOKEN=$(grep SUPABASE_ACCESS_TOKEN .env.local | cut -d '=' -f2) npx supabase secrets set SECRET_NAME="value" --project-ref usvlgqtbvsnuiefvpoda
 ```
 
 ## What NOT to Build
 
 - User authentication/login
 - Dashboard or account pages
-- Stripe integration (just waitlist for now)
 - License key validation
-- Any backend API routes (except simple email collection)
 
 ## Reference
 
