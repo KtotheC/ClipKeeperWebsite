@@ -5,10 +5,22 @@ import HowItWorks from '@/components/HowItWorks';
 import Pricing from '@/components/Pricing';
 import FAQ from '@/components/FAQ';
 import Footer from '@/components/Footer';
+import {
+  FAQSchema,
+  ProductSchema,
+  OrganizationSchema,
+  WebsiteSchema,
+} from '@/components/StructuredData';
 
 export default function Home() {
   return (
     <>
+      {/* JSON-LD Structured Data for SEO */}
+      <FAQSchema />
+      <ProductSchema />
+      <OrganizationSchema />
+      <WebsiteSchema />
+
       <Navbar />
       <main>
         <Hero />

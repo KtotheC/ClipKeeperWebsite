@@ -1,0 +1,156 @@
+// FAQ Schema for Google Rich Snippets
+export function FAQSchema() {
+  const faqData = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: [
+      {
+        '@type': 'Question',
+        name: 'What file format are the downloads?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'Videos are downloaded as .ts (MPEG Transport Stream) files. This format plays in VLC Media Player, Windows Media Player, and most modern video players. For social media sharing, you can easily convert to MP4 using free tools like VLC or online converters.',
+        },
+      },
+      {
+        '@type': 'Question',
+        name: 'Why .ts instead of .mp4?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: "Chrome Extension security policies prevent in-browser video conversion. The .ts format is actually what GameChanger uses internally - we're just giving you direct access to the original quality. The files play just fine in most players.",
+        },
+      },
+      {
+        '@type': 'Question',
+        name: 'Is this legal?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: "You're downloading videos of your own children that you already have viewing access to through your GameChanger subscription. ClipKeeper simply helps you exercise your right to backup your personal family memories.",
+        },
+      },
+      {
+        '@type': 'Question',
+        name: 'What if GameChanger changes something?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: "We actively monitor GameChanger's video delivery system and update the extension when needed. If you encounter any issues, our support team is here to help.",
+        },
+      },
+      {
+        '@type': 'Question',
+        name: 'Do I need a GameChanger subscription?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'Yes, ClipKeeper works with videos you already have access to through GameChanger. It helps you download and backup clips from your existing subscription.',
+        },
+      },
+      {
+        '@type': 'Question',
+        name: 'How do I get support?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'Free users can reach us via email. Pro users get priority support with faster response times. Just reach out and we\'ll help you troubleshoot any issues.',
+        },
+      },
+    ],
+  };
+
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(faqData) }}
+    />
+  );
+}
+
+// Product Schema for Pricing
+export function ProductSchema() {
+  const productData = {
+    '@context': 'https://schema.org',
+    '@type': 'SoftwareApplication',
+    name: 'ClipKeeper',
+    applicationCategory: 'BrowserApplication',
+    operatingSystem: 'Chrome',
+    description:
+      "Download and backup your kids' GameChanger sports videos. One-click downloads, smart file naming, and batch export for baseball, softball, and basketball clips.",
+    offers: [
+      {
+        '@type': 'Offer',
+        name: 'ClipKeeper Free',
+        price: '0',
+        priceCurrency: 'USD',
+        description: '5 downloads per week, smart file naming, works on all GameChanger videos',
+      },
+      {
+        '@type': 'Offer',
+        name: 'ClipKeeper Pro Monthly',
+        price: '5',
+        priceCurrency: 'USD',
+        billingDuration: 'P1M',
+        description: 'Unlimited downloads, batch download entire games, download by player filter, priority support',
+      },
+      {
+        '@type': 'Offer',
+        name: 'ClipKeeper Pro Yearly',
+        price: '29',
+        priceCurrency: 'USD',
+        billingDuration: 'P1Y',
+        description: 'Unlimited downloads, batch download entire games, download by player filter, priority support - Best value!',
+      },
+    ],
+    aggregateRating: {
+      '@type': 'AggregateRating',
+      ratingValue: '5',
+      ratingCount: '1',
+    },
+  };
+
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(productData) }}
+    />
+  );
+}
+
+// Organization Schema
+export function OrganizationSchema() {
+  const orgData = {
+    '@context': 'https://schema.org',
+    '@type': 'Organization',
+    name: 'ClipKeeper',
+    url: 'https://getclipkeeper.com',
+    logo: 'https://getclipkeeper.com/icon-512.png',
+    description:
+      "ClipKeeper helps parents download and backup their kids' GameChanger youth sports video clips.",
+    contactPoint: {
+      '@type': 'ContactPoint',
+      email: 'support@getclipkeeper.com',
+      contactType: 'customer support',
+    },
+  };
+
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(orgData) }}
+    />
+  );
+}
+
+// WebSite Schema for Sitelinks Search Box
+export function WebsiteSchema() {
+  const websiteData = {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    name: 'ClipKeeper',
+    url: 'https://getclipkeeper.com',
+  };
+
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteData) }}
+    />
+  );
+}

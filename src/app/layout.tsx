@@ -13,6 +13,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://getclipkeeper.com'),
   title: 'ClipKeeper - Download GameChanger Video Clips',
   description:
     'Download and backup your kids\' GameChanger sports videos. One-click downloads, smart file naming, and batch export for baseball, softball, and basketball clips.',
@@ -23,6 +24,8 @@ export const metadata: Metadata = {
     'youth sports video download',
     'baseball clips download',
     'softball video backup',
+    'gamechanger video downloader',
+    'save gamechanger clips',
   ],
   authors: [{ name: 'ClipKeeper' }],
   openGraph: {
@@ -33,16 +36,28 @@ export const metadata: Metadata = {
     siteName: 'ClipKeeper',
     type: 'website',
     locale: 'en_US',
+    images: [
+      {
+        url: '/og-image.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'ClipKeeper - Download GameChanger Video Clips',
+      },
+    ],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'ClipKeeper - Download GameChanger Video Clips',
     description:
       'Download and backup your kids\' GameChanger sports videos. One-click downloads, smart file naming, and batch export.',
+    images: ['/og-image.jpg'],
   },
   robots: {
     index: true,
     follow: true,
+  },
+  alternates: {
+    canonical: '/',
   },
 };
 
