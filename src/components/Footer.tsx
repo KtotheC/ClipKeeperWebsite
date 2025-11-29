@@ -30,11 +30,11 @@ export default function Footer() {
               Chrome Web Store
             </a>
             <a
-              href="mailto:support@getclipkeeper.com"
+              href="/contact"
               className="hover:text-white transition-colors flex items-center gap-1"
             >
               <Mail className="w-4 h-4" />
-              Contact
+              Support
             </a>
           </div>
         </div>
