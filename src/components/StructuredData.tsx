@@ -154,3 +154,156 @@ export function WebsiteSchema() {
     />
   );
 }
+
+// Article Schema for Blog Posts
+interface ArticleSchemaProps {
+  title: string;
+  description: string;
+  datePublished: string;
+  dateModified?: string;
+  slug: string;
+  imageUrl?: string;
+}
+
+export function ArticleSchema({
+  title,
+  description,
+  datePublished,
+  dateModified,
+  slug,
+  imageUrl,
+}: ArticleSchemaProps) {
+  const articleData = {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: title,
+    description: description,
+    image: imageUrl || 'https://getclipkeeper.com/og-image.jpg',
+    author: {
+      '@type': 'Organization',
+      name: 'ClipKeeper',
+      url: 'https://getclipkeeper.com',
+    },
+    publisher: {
+      '@type': 'Organization',
+      name: 'ClipKeeper',
+      logo: {
+        '@type': 'ImageObject',
+        url: 'https://getclipkeeper.com/icon-512.png',
+      },
+    },
+    datePublished: datePublished,
+    dateModified: dateModified || datePublished,
+    mainEntityOfPage: {
+      '@type': 'WebPage',
+      '@id': `https://getclipkeeper.com/blog/${slug}`,
+    },
+  };
+
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(articleData) }}
+    />
+  );
+}
+
+// HowTo Schema for Tutorial Posts
+interface HowToStep {
+  name: string;
+  text: string;
+  image?: string;
+}
+
+interface HowToSchemaProps {
+  name: string;
+  description: string;
+  steps: HowToStep[];
+  totalTime?: string;
+}
+
+export function HowToSchema({ name, description, steps, totalTime = 'PT5M' }: HowToSchemaProps) {
+  const howToData = {
+    '@context': 'https://schema.org',
+    '@type': 'HowTo',
+    name: name,
+    description: description,
+    totalTime: totalTime,
+    step: steps.map((step, index) => ({
+      '@type': 'HowToStep',
+      position: index + 1,
+      name: step.name,
+      text: step.text,
+      ...(step.image && { image: step.image }),
+    })),
+  };
+
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(howToData) }}
+    />
+  );
+}
+
+// Blog-specific FAQ Schema (for individual blog posts)
+interface FAQItem {
+  question: string;
+  answer: string;
+}
+
+interface FAQPageSchemaProps {
+  faqs: FAQItem[];
+}
+
+export function FAQPageSchema({ faqs }: FAQPageSchemaProps) {
+  const faqData = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faqs.map((faq) => ({
+      '@type': 'Question',
+      name: faq.question,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: faq.answer,
+      },
+    })),
+  };
+
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(faqData) }}
+    />
+  );
+}
+
+// Breadcrumb Schema for Navigation
+interface BreadcrumbItem {
+  name: string;
+  url: string;
+}
+
+interface BreadcrumbSchemaProps {
+  items: BreadcrumbItem[];
+}
+
+export function BreadcrumbSchema({ items }: BreadcrumbSchemaProps) {
+  const breadcrumbData = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: items.map((item, index) => ({
+      '@type': 'ListItem',
+      position: index + 1,
+      name: item.name,
+      item: item.url,
+    })),
+  };
+
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbData) }}
+    />
+  );
+}

@@ -20,6 +20,9 @@ export default function Footer() {
 
           {/* Links */}
           <div className="flex flex-wrap items-center justify-center gap-6 text-sm">
+            <a href="/blog" className="hover:text-white transition-colors">
+              Blog
+            </a>
             <a href="/privacy" className="hover:text-white transition-colors">
               Privacy Policy
             </a>
