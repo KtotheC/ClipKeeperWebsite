@@ -14,7 +14,16 @@
       "Bash(git push)",
       "mcp__github__create_repository",
       "Bash(gh repo create:*)",
-      "Bash(dir /b \"src\\app\\success\")"
+      "Bash(dir /b \"src\\app\\success\")",
+      "Bash(supabase secrets set:*)",
+      "Bash(npx supabase:*)",
+      "Bash(SUPABASE_ACCESS_TOKEN=sbp_71aeab6c4ec2a374e16f2c6f04f5f1211de8aa9b npx supabase secrets set:*)",
+      "Bash(SUPABASE_ACCESS_TOKEN=sbp_71aeab6c4ec2a374e16f2c6f04f5f1211de8aa9b npx supabase:*)",
+      "Bash(powershell:*)",
+      "Bash(dir:*)",
+      "Bash(find:*)",
+      "Bash(copy:*)",
+      "Bash(ls:*)"
     ]
   },
   "enableAllProjectMcpServers": true,
