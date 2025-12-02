@@ -1,12 +1,11 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { Download, Video, XCircle, CheckCircle } from 'lucide-react';
+import { Download, XCircle, CheckCircle } from 'lucide-react';
 import { getPostBySlug, getRelatedPosts } from '@/lib/blog/posts';
 import { generateBlogMetadata } from '@/lib/blog/utils';
 import {
   BlogLayout,
   StepCard,
-  FeatureList,
   CTASection,
   SectionHeading,
   RelatedPosts,
@@ -67,7 +66,11 @@ export default function BlogPost() {
         <SectionHeading number={1}>The Problem with Screen Recording</SectionHeading>
         <p className="text-gray-600 mb-6">
           We get it. GameChanger doesn&apos;t have a download button, so you&apos;ve been
-          screen recording your kid&apos;s highlights. It works... sort of.
+          screen recording your kid&apos;s highlights. But there&apos;s a better way - you can{' '}
+          <Link href="/blog/how-to-download-gamechanger-video" className="text-green-600 hover:underline">
+            download GameChanger videos directly
+          </Link>{' '}
+          in original HD quality.
         </p>
         <p className="text-gray-600 mb-6">
           But let&apos;s be honest - screen recording is frustrating and the results

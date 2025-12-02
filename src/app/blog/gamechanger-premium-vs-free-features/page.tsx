@@ -67,7 +67,11 @@ export default function BlogPost() {
         <p className="text-gray-600 mb-6">
           GameChanger offers a free tier and a premium subscription called &quot;GameChanger Plus&quot;
           (sometimes marketed as Premium or Pro+). The paid tier costs about <strong>$99/year</strong> or
-          $12.99/month.
+          $12.99/month. Spoiler: Even Premium doesn&apos;t let you{' '}
+          <Link href="/blog/how-to-download-gamechanger-video" className="text-green-600 hover:underline">
+            download your videos
+          </Link>{' '}
+          - you&apos;ll need ClipKeeper for that.
         </p>
         <p className="text-gray-600 mb-6">
           But what do you actually get for that money? And more importantly - does it let you

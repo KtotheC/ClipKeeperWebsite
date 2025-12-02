@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { Download, Smartphone, Monitor, Sparkles, ExternalLink } from 'lucide-react';
+import { Smartphone, Monitor, Sparkles } from 'lucide-react';
 import { getPostBySlug, getRelatedPosts } from '@/lib/blog/posts';
 import { generateBlogMetadata } from '@/lib/blog/utils';
 import {

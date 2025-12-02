@@ -82,8 +82,11 @@ export default function BlogPost() {
         <SectionHeading number={1}>Why Baseball Recruiting Videos Matter</SectionHeading>
         <p className="text-gray-600 mb-6">
           College coaches don&apos;t have time to attend every travel ball game. They rely
-          on recruiting videos to scout potential players. A well-made highlight reel can
-          be the difference between getting noticed and getting overlooked.
+          on recruiting videos to scout potential players. Before you can build one, you&apos;ll need to{' '}
+          <Link href="/blog/how-to-download-gamechanger-video" className="text-green-600 hover:underline">
+            download your GameChanger clips
+          </Link>
+          . A well-made highlight reel can be the difference between getting noticed and getting overlooked.
         </p>
         <p className="text-gray-600 mb-6">
           The good news? You don&apos;t need professional videographers. GameChanger already

@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { Play, Monitor, Smartphone, HelpCircle, ExternalLink } from 'lucide-react';
+import { Monitor, Smartphone, HelpCircle, ExternalLink } from 'lucide-react';
 import { getPostBySlug, getRelatedPosts } from '@/lib/blog/posts';
 import { generateBlogMetadata } from '@/lib/blog/utils';
 import {

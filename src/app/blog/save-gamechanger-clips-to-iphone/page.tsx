@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { Download, Smartphone, Monitor, Share2 } from 'lucide-react';
+import { Smartphone, Monitor, Share2 } from 'lucide-react';
 import { getPostBySlug, getRelatedPosts } from '@/lib/blog/posts';
 import { generateBlogMetadata } from '@/lib/blog/utils';
 import {
@@ -76,8 +76,12 @@ export default function BlogPost() {
         <SectionHeading number={1}>The Problem: GameChanger Videos Stuck on the Web</SectionHeading>
         <p className="text-gray-600 mb-6">
           You want to show grandma that amazing catch your kid made. Or post it to Instagram.
-          But GameChanger doesn&apos;t have a &quot;save to camera roll&quot; button. The videos
-          are trapped on their website.
+          But GameChanger doesn&apos;t have a &quot;save to camera roll&quot; button. The solution?
+          First{' '}
+          <Link href="/blog/how-to-download-gamechanger-video" className="text-green-600 hover:underline">
+            download your GameChanger videos
+          </Link>{' '}
+          to your computer, then transfer them to your iPhone.
         </p>
         <p className="text-gray-600 mb-6">
           Even if you could download them, there&apos;s no direct way to get GameChanger videos

@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState, useCallback, Suspense } from 'react';
+import { useEffect, useState, useRef, Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { motion } from 'framer-motion';
 import { CheckCircle, Copy, Loader2, AlertCircle } from 'lucide-react';
@@ -18,59 +18,70 @@ function SuccessContentInner() {
   const searchParams = useSearchParams();
   const sessionId = searchParams.get('session_id');
 
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
+  // Initialize error state based on sessionId availability
+  const [loading, setLoading] = useState(() => !!sessionId);
+  const [error, setError] = useState<string | null>(() =>
+    sessionId ? null : 'No session ID found. Please contact support.'
+  );
   const [license, setLicense] = useState<LicenseData | null>(null);
   const [copied, setCopied] = useState(false);
-  const [attempts, setAttempts] = useState(0);
 
-  const fetchLicense = useCallback(async () => {
+  // Use refs to track polling state without triggering re-renders
+  const attemptsRef = useRef(0);
+  const timeoutRef = useRef<NodeJS.Timeout | null>(null);
+
+  useEffect(() => {
     if (!sessionId) {
-      setError('No session ID found. Please contact support.');
-      setLoading(false);
       return;
     }
 
-    try {
-      const response = await fetch(`${SUPABASE_URL}/get-license-status`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ session_id: sessionId }),
-      });
+    const fetchLicense = async () => {
+      try {
+        const response = await fetch(`${SUPABASE_URL}/get-license-status`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ session_id: sessionId }),
+        });
 
-      const data = await response.json();
+        const data = await response.json();
 
-      if (data.license_key) {
-        setLicense(data);
-        setLoading(false);
-      } else if (data.pending) {
-        // License not ready yet, retry
-        setAttempts(prev => prev + 1);
-        if (attempts < 15) {
-          setTimeout(fetchLicense, 2000);
+        if (data.license_key) {
+          setLicense(data);
+          setLoading(false);
+        } else if (data.pending) {
+          // License not ready yet, retry
+          attemptsRef.current += 1;
+          if (attemptsRef.current < 15) {
+            timeoutRef.current = setTimeout(fetchLicense, 2000);
+          } else {
+            setError('License generation is taking longer than expected. Please check your email or contact support.');
+            setLoading(false);
+          }
         } else {
-          setError('License generation is taking longer than expected. Please check your email or contact support.');
+          setError(data.error || 'Failed to retrieve license');
           setLoading(false);
         }
-      } else {
-        setError(data.error || 'Failed to retrieve license');
-        setLoading(false);
+      } catch (err) {
+        console.error('Error fetching license:', err);
+        attemptsRef.current += 1;
+        if (attemptsRef.current < 15) {
+          timeoutRef.current = setTimeout(fetchLicense, 2000);
+        } else {
+          setError('Network error. Please refresh the page or contact support.');
+          setLoading(false);
+        }
       }
-    } catch (err) {
-      console.error('Error fetching license:', err);
-      setAttempts(prev => prev + 1);
-      if (attempts < 15) {
-        setTimeout(fetchLicense, 2000);
-      } else {
-        setError('Network error. Please refresh the page or contact support.');
-        setLoading(false);
-      }
-    }
-  }, [sessionId, attempts]);
+    };
 
-  useEffect(() => {
     fetchLicense();
-  }, [fetchLicense]);
+
+    // Cleanup timeout on unmount
+    return () => {
+      if (timeoutRef.current) {
+        clearTimeout(timeoutRef.current);
+      }
+    };
+  }, [sessionId]);
 
   const copyToClipboard = async () => {
     if (license?.license_key) {

@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { CheckCircle, XCircle, Video, DollarSign } from 'lucide-react';
+import { CheckCircle, XCircle, DollarSign } from 'lucide-react';
 import { getPostBySlug, getRelatedPosts } from '@/lib/blog/posts';
 import { generateBlogMetadata } from '@/lib/blog/utils';
 import {
@@ -66,7 +66,12 @@ export default function BlogPost() {
         <SectionHeading number={1}>Overview: Two Different Approaches</SectionHeading>
         <p className="text-gray-600 mb-6">
           <strong>GameChanger</strong> and <strong>SidelineHD</strong> are both popular for
-          youth sports video, but they work differently:
+          youth sports video, but they work differently. Wondering which lets you keep your videos?
+          With GameChanger, you can{' '}
+          <Link href="/blog/how-to-download-gamechanger-video" className="text-green-600 hover:underline">
+            download your clips using ClipKeeper
+          </Link>
+          .
         </p>
 
         <div className="grid md:grid-cols-2 gap-6 my-8">

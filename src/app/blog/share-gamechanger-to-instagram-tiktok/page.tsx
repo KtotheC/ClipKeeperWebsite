@@ -78,7 +78,11 @@ export default function BlogPost() {
         <p className="text-gray-600 mb-6">
           Your kid just made an incredible play. You want to share it with family, friends,
           and maybe the whole world on social media. But GameChanger doesn&apos;t have a
-          &quot;share to Instagram&quot; or &quot;share to TikTok&quot; button.
+          &quot;share to Instagram&quot; or &quot;share to TikTok&quot; button. The solution?{' '}
+          <Link href="/blog/how-to-download-gamechanger-video" className="text-green-600 hover:underline">
+            Download your GameChanger videos
+          </Link>{' '}
+          first, then share anywhere.
         </p>
         <p className="text-gray-600 mb-6">
           You can share a link to the video, but that only works if someone has a GameChanger
