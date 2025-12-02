@@ -10,3 +10,4 @@ export { default as RelatedPosts } from './RelatedPosts';
 export { default as NumberBadge } from './NumberBadge';
 export { default as SectionHeading } from './SectionHeading';
 export { default as VideoPlaceholder } from './VideoPlaceholder';
+export { default as YouTubeEmbed } from './YouTubeEmbed';

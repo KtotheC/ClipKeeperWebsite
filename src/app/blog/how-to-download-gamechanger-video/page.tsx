@@ -8,7 +8,7 @@ import {
   FeatureList,
   CTASection,
   SectionHeading,
-  VideoPlaceholder,
+  YouTubeEmbed,
   RelatedPosts,
 } from '@/components/blog';
 import { ArticleSchema, HowToSchema, BreadcrumbSchema, FAQPageSchema } from '@/components/StructuredData';
@@ -77,7 +77,7 @@ export default function BlogPost() {
         readingTime={post.readingTime}
         slug={post.slug}
       >
-        <VideoPlaceholder />
+        <YouTubeEmbed videoId="X9D9ESPdEnc" title="How to Download GameChanger Videos - Tutorial" />
 
         <SectionHeading number={1}>Why You Can&apos;t Download GameChanger Videos</SectionHeading>
         <p className="text-gray-600 mb-6">
