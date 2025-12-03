@@ -7,4 +7,4 @@ Disallow: /api/
 Disallow: /_next/
 
 # Sitemap location
-Sitemap: https://clipkeeper.com/sitemap.xml
+Sitemap: https://getclipkeeper.com/sitemap.xml
