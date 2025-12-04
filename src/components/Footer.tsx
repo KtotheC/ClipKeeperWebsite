@@ -29,7 +29,7 @@ export default function Footer() {
             <a href="/terms" className="hover:text-white transition-colors">
               Terms of Service
             </a>
-            <a href="#" className="hover:text-white transition-colors">
+            <a href="https://chrome.google.com/webstore/detail/beelllgidjaklbnacknjkghfibfpjhac" className="hover:text-white transition-colors">
               Chrome Web Store
             </a>
             <a

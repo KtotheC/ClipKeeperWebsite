@@ -19,7 +19,7 @@ const plans = [
       'Chrome extension',
     ],
     cta: 'Install Now',
-    ctaLink: '#', // Chrome Web Store link will go here
+    ctaLink: 'https://chrome.google.com/webstore/detail/beelllgidjaklbnacknjkghfibfpjhac',
     highlighted: false,
     plan: null,
   },

@@ -196,7 +196,7 @@ See `PRD.md` for full product context including:
 
 ## Chrome Web Store Link
 
-TBD - will be added once extension is published
+https://chrome.google.com/webstore/detail/beelllgidjaklbnacknjkghfibfpjhac
 
 ## Contact
 
