@@ -10,6 +10,9 @@ export const metadata: Metadata = {
     description: 'ClipKeeper terms of service - the terms and conditions for using our Chrome extension and website.',
     images: ['/og-image.jpg'],
   },
+  alternates: {
+    canonical: '/terms',
+  },
 };
 
 export default function TermsOfService() {

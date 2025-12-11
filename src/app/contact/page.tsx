@@ -10,6 +10,9 @@ export const metadata: Metadata = {
     description: 'Get help with ClipKeeper. Contact our support team for questions about downloads, Pro features, or technical issues.',
     images: ['/og-image.jpg'],
   },
+  alternates: {
+    canonical: '/contact',
+  },
 };
 
 export default function ContactPage() {

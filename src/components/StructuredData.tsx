@@ -114,11 +114,6 @@ export function ProductSchema() {
         availability: 'https://schema.org/InStock',
       },
     ],
-    aggregateRating: {
-      '@type': 'AggregateRating',
-      ratingValue: '5',
-      ratingCount: '1',
-    },
   };
 
   return (

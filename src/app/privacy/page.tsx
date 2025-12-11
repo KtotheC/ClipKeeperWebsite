@@ -10,6 +10,9 @@ export const metadata: Metadata = {
     description: 'ClipKeeper privacy policy - how we handle your data and protect your privacy.',
     images: ['/og-image.jpg'],
   },
+  alternates: {
+    canonical: '/privacy',
+  },
 };
 
 export default function PrivacyPolicy() {
