@@ -8,32 +8,32 @@ const faqs = [
   {
     question: 'What file format are the downloads?',
     answer:
-      'Videos are downloaded as .ts (MPEG Transport Stream) files. This format plays in VLC Media Player, Windows Media Player, and most modern video players. For social media sharing, you can easily convert to MP4 using free tools like VLC or online converters.',
+      '.ts (MPEG Transport Stream) files. This format plays in VLC, Windows Media Player, and most modern video players. Convert to MP4 using free tools like VLC or HandBrake if needed.',
   },
   {
     question: 'Why .ts instead of .mp4?',
     answer:
-      "Chrome Extension security policies prevent in-browser video conversion. The .ts format is actually what GameChanger uses internally - we're just giving you direct access to the original quality. The files play just fine in most players.",
+      "Chrome security policies prevent in-browser conversion. The .ts format is GameChanger's native format, giving you the original quality without re-encoding.",
   },
   {
     question: 'Is this legal?',
     answer:
-      "You're downloading videos of your own children that you already have viewing access to through your GameChanger subscription. ClipKeeper simply helps you exercise your right to backup your personal family memories.",
+      'Yes. You are downloading videos of your own children that you already have access to through GameChanger. ClipKeeper helps you backup personal family memories you already own.',
   },
   {
     question: 'What if GameChanger changes something?',
     answer:
-      "We actively monitor GameChanger's video delivery system and update the extension when needed. If you encounter any issues, our support team is here to help.",
+      'ClipKeeper is actively maintained and updated when needed. Contact support@getclipkeeper.com if you encounter any issues.',
   },
   {
     question: 'Do I need a GameChanger subscription?',
     answer:
-      'Yes, ClipKeeper works with videos you already have access to through GameChanger. It helps you download and backup clips from your existing subscription.',
+      'Yes. ClipKeeper downloads videos you already have access to through your GameChanger account. It does not grant access to new content.',
   },
   {
     question: 'How do I get support?',
     answer:
-      'Free users can reach us via email. Pro users get priority support with faster response times. Just reach out and we\'ll help you troubleshoot any issues.',
+      'Email support@getclipkeeper.com. Pro users receive priority support with faster response times.',
   },
 ];
 

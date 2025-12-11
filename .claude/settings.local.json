@@ -23,7 +23,9 @@
       "Bash(dir:*)",
       "Bash(find:*)",
       "Bash(copy:*)",
-      "Bash(ls:*)"
+      "Bash(ls:*)",
+      "Bash(grep:*)",
+      "Bash(git log:*)"
     ]
   },
   "enableAllProjectMcpServers": true,

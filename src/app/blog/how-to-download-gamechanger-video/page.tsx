@@ -11,7 +11,7 @@ import {
   YouTubeEmbed,
   RelatedPosts,
 } from '@/components/blog';
-import { ArticleSchema, HowToSchema, BreadcrumbSchema, FAQPageSchema } from '@/components/StructuredData';
+import { ArticleSchema, HowToSchema, BreadcrumbSchema, FAQPageSchema, VideoSchema } from '@/components/StructuredData';
 import Link from 'next/link';
 
 const SLUG = 'how-to-download-gamechanger-video';
@@ -68,6 +68,14 @@ export default function BlogPost() {
             answer: 'You can convert .ts files to MP4 using free tools like VLC Media Player or HandBrake. The conversion only takes a few seconds per clip.',
           },
         ]}
+      />
+      <VideoSchema
+        name="How to Download GameChanger Videos - Tutorial"
+        description="Step-by-step tutorial showing how to download GameChanger video clips using the ClipKeeper Chrome extension. Save your kids' sports highlights forever."
+        thumbnailUrl="https://img.youtube.com/vi/X9D9ESPdEnc/maxresdefault.jpg"
+        uploadDate="2024-12-01"
+        embedUrl="https://www.youtube.com/embed/X9D9ESPdEnc"
+        duration="PT3M"
       />
 
       <BlogLayout

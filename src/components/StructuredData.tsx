@@ -9,7 +9,7 @@ export function FAQSchema() {
         name: 'What file format are the downloads?',
         acceptedAnswer: {
           '@type': 'Answer',
-          text: 'Videos are downloaded as .ts (MPEG Transport Stream) files. This format plays in VLC Media Player, Windows Media Player, and most modern video players. For social media sharing, you can easily convert to MP4 using free tools like VLC or online converters.',
+          text: '.ts (MPEG Transport Stream) files. This format plays in VLC, Windows Media Player, and most modern video players. Convert to MP4 using free tools like VLC or HandBrake if needed.',
         },
       },
       {
@@ -17,7 +17,7 @@ export function FAQSchema() {
         name: 'Why .ts instead of .mp4?',
         acceptedAnswer: {
           '@type': 'Answer',
-          text: "Chrome Extension security policies prevent in-browser video conversion. The .ts format is actually what GameChanger uses internally - we're just giving you direct access to the original quality. The files play just fine in most players.",
+          text: "Chrome security policies prevent in-browser conversion. The .ts format is GameChanger's native format, giving you the original quality without re-encoding.",
         },
       },
       {
@@ -25,7 +25,7 @@ export function FAQSchema() {
         name: 'Is this legal?',
         acceptedAnswer: {
           '@type': 'Answer',
-          text: "You're downloading videos of your own children that you already have viewing access to through your GameChanger subscription. ClipKeeper simply helps you exercise your right to backup your personal family memories.",
+          text: 'Yes. You are downloading videos of your own children that you already have access to through GameChanger. ClipKeeper helps you backup personal family memories you already own.',
         },
       },
       {
@@ -33,7 +33,7 @@ export function FAQSchema() {
         name: 'What if GameChanger changes something?',
         acceptedAnswer: {
           '@type': 'Answer',
-          text: "We actively monitor GameChanger's video delivery system and update the extension when needed. If you encounter any issues, our support team is here to help.",
+          text: 'ClipKeeper is actively maintained and updated when needed. Contact support@getclipkeeper.com if you encounter any issues.',
         },
       },
       {
@@ -41,7 +41,7 @@ export function FAQSchema() {
         name: 'Do I need a GameChanger subscription?',
         acceptedAnswer: {
           '@type': 'Answer',
-          text: 'Yes, ClipKeeper works with videos you already have access to through GameChanger. It helps you download and backup clips from your existing subscription.',
+          text: 'Yes. ClipKeeper downloads videos you already have access to through your GameChanger account. It does not grant access to new content.',
         },
       },
       {
@@ -49,7 +49,7 @@ export function FAQSchema() {
         name: 'How do I get support?',
         acceptedAnswer: {
           '@type': 'Answer',
-          text: 'Free users can reach us via email. Pro users get priority support with faster response times. Just reach out and we\'ll help you troubleshoot any issues.',
+          text: 'Email support@getclipkeeper.com. Pro users receive priority support with faster response times.',
         },
       },
     ],
@@ -69,10 +69,23 @@ export function ProductSchema() {
     '@context': 'https://schema.org',
     '@type': 'SoftwareApplication',
     name: 'ClipKeeper',
-    applicationCategory: 'BrowserApplication',
+    applicationCategory: 'BrowserExtension',
+    applicationSubCategory: 'Video Downloader',
     operatingSystem: 'Chrome',
+    browserRequirements: 'Chrome 88+',
     description:
       "Download and backup your kids' GameChanger sports videos. One-click downloads, smart file naming, and batch export for baseball, softball, and basketball clips.",
+    url: 'https://getclipkeeper.com',
+    downloadUrl: 'https://chromewebstore.google.com',
+    softwareVersion: '1.0',
+    screenshot: 'https://getclipkeeper.com/og-image.jpg',
+    featureList: [
+      'One-click video downloads',
+      'Smart file naming with player and play info',
+      'Batch download entire games',
+      'Works with all GameChanger sports',
+      'Original HD quality preservation',
+    ],
     offers: [
       {
         '@type': 'Offer',
@@ -80,6 +93,7 @@ export function ProductSchema() {
         price: '0',
         priceCurrency: 'USD',
         description: '5 downloads per week, smart file naming, works on all GameChanger videos',
+        availability: 'https://schema.org/InStock',
       },
       {
         '@type': 'Offer',
@@ -88,6 +102,7 @@ export function ProductSchema() {
         priceCurrency: 'USD',
         billingDuration: 'P1M',
         description: 'Unlimited downloads, batch download entire games, download by player filter, priority support',
+        availability: 'https://schema.org/InStock',
       },
       {
         '@type': 'Offer',
@@ -96,6 +111,7 @@ export function ProductSchema() {
         priceCurrency: 'USD',
         billingDuration: 'P1Y',
         description: 'Unlimited downloads, batch download entire games, download by player filter, priority support - Best value!',
+        availability: 'https://schema.org/InStock',
       },
     ],
     aggregateRating: {
@@ -304,6 +320,102 @@ export function BreadcrumbSchema({ items }: BreadcrumbSchemaProps) {
     <script
       type="application/ld+json"
       dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbData) }}
+    />
+  );
+}
+
+// VideoObject Schema for YouTube Embeds
+interface VideoSchemaProps {
+  name: string;
+  description: string;
+  thumbnailUrl: string;
+  uploadDate: string;
+  embedUrl: string;
+  duration?: string;
+}
+
+export function VideoSchema({
+  name,
+  description,
+  thumbnailUrl,
+  uploadDate,
+  embedUrl,
+  duration,
+}: VideoSchemaProps) {
+  const videoData = {
+    '@context': 'https://schema.org',
+    '@type': 'VideoObject',
+    name,
+    description,
+    thumbnailUrl,
+    uploadDate,
+    embedUrl,
+    ...(duration && { duration }),
+  };
+
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(videoData) }}
+    />
+  );
+}
+
+// Speakable Schema for Voice Search Optimization
+interface SpeakableSchemaProps {
+  url: string;
+  cssSelector?: string[];
+  xpath?: string[];
+}
+
+export function SpeakableSchema({ url, cssSelector, xpath }: SpeakableSchemaProps) {
+  const speakableData = {
+    '@context': 'https://schema.org',
+    '@type': 'WebPage',
+    url,
+    speakable: {
+      '@type': 'SpeakableSpecification',
+      ...(cssSelector && { cssSelector }),
+      ...(xpath && { xpath }),
+    },
+  };
+
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(speakableData) }}
+    />
+  );
+}
+
+// CollectionPage Schema for Blog Index
+interface CollectionPageSchemaProps {
+  name: string;
+  description: string;
+  items: { name: string; url: string }[];
+}
+
+export function CollectionPageSchema({ name, description, items }: CollectionPageSchemaProps) {
+  const collectionData = {
+    '@context': 'https://schema.org',
+    '@type': 'CollectionPage',
+    name,
+    description,
+    mainEntity: {
+      '@type': 'ItemList',
+      itemListElement: items.map((item, index) => ({
+        '@type': 'ListItem',
+        position: index + 1,
+        name: item.name,
+        url: item.url,
+      })),
+    },
+  };
+
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(collectionData) }}
     />
   );
 }

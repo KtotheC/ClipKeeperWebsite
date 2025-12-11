@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { ArrowLeft } from 'lucide-react';
 import { getAllPosts } from '@/lib/blog/posts';
 import { BlogPostCard } from '@/components/blog';
+import { CollectionPageSchema, BreadcrumbSchema } from '@/components/StructuredData';
 
 export const metadata: Metadata = {
   title: 'GameChanger Video Tips & Guides | ClipKeeper Blog',
@@ -23,6 +24,7 @@ export const metadata: Metadata = {
     description:
       'Expert guides on downloading, converting, and sharing GameChanger sports videos.',
     type: 'website',
+    images: ['/og-image.jpg'],
   },
 };
 
@@ -30,7 +32,22 @@ export default function BlogIndex() {
   const posts = getAllPosts();
 
   return (
-    <div className="min-h-screen bg-white">
+    <>
+      <CollectionPageSchema
+        name="ClipKeeper Blog - GameChanger Video Tips & Guides"
+        description="Expert guides on downloading, converting, and sharing GameChanger sports videos. Tips for parents, coaches, and youth athletes."
+        items={posts.map((post) => ({
+          name: post.title,
+          url: `https://getclipkeeper.com/blog/${post.slug}`,
+        }))}
+      />
+      <BreadcrumbSchema
+        items={[
+          { name: 'Home', url: 'https://getclipkeeper.com' },
+          { name: 'Blog', url: 'https://getclipkeeper.com/blog' },
+        ]}
+      />
+      <div className="min-h-screen bg-white">
       {/* Header */}
       <header className="border-b border-gray-100 py-4">
         <div className="max-w-4xl mx-auto px-4">
@@ -74,6 +91,7 @@ export default function BlogIndex() {
           </div>
         </div>
       </footer>
-    </div>
+      </div>
+    </>
   );
 }

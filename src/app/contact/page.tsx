@@ -5,6 +5,11 @@ import { ArrowLeft, Mail, Clock, MessageCircle, HelpCircle } from 'lucide-react'
 export const metadata: Metadata = {
   title: 'Contact & Support | ClipKeeper',
   description: 'Get help with ClipKeeper. Contact our support team for questions about downloads, Pro features, or technical issues.',
+  openGraph: {
+    title: 'Contact & Support | ClipKeeper',
+    description: 'Get help with ClipKeeper. Contact our support team for questions about downloads, Pro features, or technical issues.',
+    images: ['/og-image.jpg'],
+  },
 };
 
 export default function ContactPage() {

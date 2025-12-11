@@ -10,6 +10,8 @@ import {
   ProductSchema,
   OrganizationSchema,
   WebsiteSchema,
+  BreadcrumbSchema,
+  SpeakableSchema,
 } from '@/components/StructuredData';
 
 export default function Home() {
@@ -20,6 +22,15 @@ export default function Home() {
       <ProductSchema />
       <OrganizationSchema />
       <WebsiteSchema />
+      <BreadcrumbSchema
+        items={[
+          { name: 'Home', url: 'https://getclipkeeper.com' },
+        ]}
+      />
+      <SpeakableSchema
+        url="https://getclipkeeper.com"
+        cssSelector={['h1', '.hero-description', '#faq']}
+      />
 
       <Navbar />
       <main>

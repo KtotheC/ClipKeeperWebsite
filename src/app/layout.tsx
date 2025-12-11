@@ -61,6 +61,9 @@ export const metadata: Metadata = {
   alternates: {
     canonical: '/',
   },
+  other: {
+    'theme-color': '#006554',
+  },
 };
 
 export default function RootLayout({
@@ -71,6 +74,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link rel="preconnect" href="https://www.youtube.com" />
+        <link rel="preconnect" href="https://www.google-analytics.com" />
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=AW-17770820464"
           strategy="afterInteractive"

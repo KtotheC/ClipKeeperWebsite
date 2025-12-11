@@ -5,6 +5,11 @@ import { ArrowLeft } from 'lucide-react';
 export const metadata: Metadata = {
   title: 'Privacy Policy | ClipKeeper',
   description: 'ClipKeeper privacy policy - how we handle your data and protect your privacy.',
+  openGraph: {
+    title: 'Privacy Policy | ClipKeeper',
+    description: 'ClipKeeper privacy policy - how we handle your data and protect your privacy.',
+    images: ['/og-image.jpg'],
+  },
 };
 
 export default function PrivacyPolicy() {

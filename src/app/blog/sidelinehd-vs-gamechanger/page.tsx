@@ -26,6 +26,7 @@ export default function BlogPost() {
         title={post.title}
         description={post.description}
         datePublished={post.publishedAt}
+        dateModified={post.updatedAt}
         slug={post.slug}
       />
       <BreadcrumbSchema
@@ -52,6 +53,14 @@ export default function BlogPost() {
           {
             question: 'How much does SidelineHD cost vs GameChanger?',
             answer: "SidelineHD costs around $25-50/month plus camera hardware. GameChanger Premium is about $99/year or $12.99/month. GameChanger's free tier includes basic features.",
+          },
+          {
+            question: 'Which platform is better for creating recruiting videos?',
+            answer: "GameChanger is better for recruiting videos because of automatic highlight clips and easy downloads via ClipKeeper. SidelineHD's full-game streams require manual editing to create highlights.",
+          },
+          {
+            question: 'Can you use both SidelineHD and GameChanger together?',
+            answer: 'Yes! Many teams use GameChanger for stats and auto-generated clips while using SidelineHD for high-quality live streaming to remote family members.',
           },
         ]}
       />
@@ -263,6 +272,36 @@ export default function BlogPost() {
         <p className="text-gray-600 mb-4">
           GameChanger has a free tier you can use indefinitely. SidelineHD typically
           offers a trial period for new teams.
+        </p>
+
+        <h3 className="font-semibold text-gray-900 mt-6 mb-2">
+          Which is better for creating recruiting videos?
+        </h3>
+        <p className="text-gray-600 mb-4">
+          GameChanger is better for recruiting videos. It automatically clips highlights,
+          making it easy to download specific plays with{' '}
+          <Link href="/" className="text-green-600 hover:underline">
+            ClipKeeper
+          </Link>
+          {' '}and compile them into a reel. SidelineHD records full games that require
+          manual editing to extract highlights. See our guides on{' '}
+          <Link href="/blog/basketball-recruiting-video-guide" className="text-green-600 hover:underline">
+            basketball recruiting videos
+          </Link>
+          {' '}and{' '}
+          <Link href="/blog/baseball-recruiting-video-tips" className="text-green-600 hover:underline">
+            baseball recruiting videos
+          </Link>
+          .
+        </p>
+
+        <h3 className="font-semibold text-gray-900 mt-6 mb-2">
+          Can you use both platforms together?
+        </h3>
+        <p className="text-gray-600 mb-4">
+          Absolutely! Many travel ball and club teams use both. GameChanger handles stats,
+          scoring, and auto-generated clips. SidelineHD provides a high-quality live stream
+          for grandparents and family watching remotely. They serve different purposes.
         </p>
 
         <CTASection

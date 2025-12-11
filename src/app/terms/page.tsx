@@ -5,6 +5,11 @@ import { ArrowLeft } from 'lucide-react';
 export const metadata: Metadata = {
   title: 'Terms of Service | ClipKeeper',
   description: 'ClipKeeper terms of service - the terms and conditions for using our Chrome extension and website.',
+  openGraph: {
+    title: 'Terms of Service | ClipKeeper',
+    description: 'ClipKeeper terms of service - the terms and conditions for using our Chrome extension and website.',
+    images: ['/og-image.jpg'],
+  },
 };
 
 export default function TermsOfService() {
