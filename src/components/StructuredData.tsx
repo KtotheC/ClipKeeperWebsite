@@ -174,6 +174,7 @@ interface ArticleSchemaProps {
   dateModified?: string;
   slug: string;
   imageUrl?: string;
+  readingTime?: string;
 }
 
 export function ArticleSchema({
@@ -183,7 +184,15 @@ export function ArticleSchema({
   dateModified,
   slug,
   imageUrl,
+  readingTime,
 }: ArticleSchemaProps) {
+  // Parse reading time string (e.g., "5 min read" → "PT5M")
+  const parseReadingTime = (time?: string): string | undefined => {
+    if (!time) return undefined;
+    const match = time.match(/(\d+)/);
+    return match ? `PT${match[1]}M` : undefined;
+  };
+
   const articleData = {
     '@context': 'https://schema.org',
     '@type': 'Article',
@@ -191,9 +200,11 @@ export function ArticleSchema({
     description: description,
     image: imageUrl || 'https://getclipkeeper.com/og-image.jpg',
     author: {
-      '@type': 'Organization',
-      name: 'ClipKeeper',
-      url: 'https://getclipkeeper.com',
+      '@type': 'Person',
+      name: 'Casey Jessup',
+      jobTitle: 'Founder',
+      url: 'https://getclipkeeper.com/about',
+      description: 'ClipKeeper Founder | Parent of youth athletes',
     },
     publisher: {
       '@type': 'Organization',
@@ -209,6 +220,7 @@ export function ArticleSchema({
       '@type': 'WebPage',
       '@id': `https://getclipkeeper.com/blog/${slug}`,
     },
+    ...(parseReadingTime(readingTime) && { timeRequired: parseReadingTime(readingTime) }),
   };
 
   return (

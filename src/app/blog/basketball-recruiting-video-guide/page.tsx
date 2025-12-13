@@ -11,7 +11,8 @@ import {
   SectionHeading,
   RelatedPosts,
 } from '@/components/blog';
-import { ArticleSchema, HowToSchema, BreadcrumbSchema, FAQPageSchema } from '@/components/StructuredData';
+import { ArticleSchema, HowToSchema, BreadcrumbSchema } from '@/components/StructuredData';
+import AuthorBio from '@/components/blog/AuthorBio';
 
 const SLUG = 'basketball-recruiting-video-guide';
 
@@ -28,6 +29,7 @@ export default function BlogPost() {
         description={post.description}
         datePublished={post.publishedAt}
         slug={post.slug}
+        readingTime={post.readingTime}
       />
       <HowToSchema
         name="How to Make a Basketball Recruiting Video"
@@ -45,30 +47,6 @@ export default function BlogPost() {
           { name: 'Home', url: 'https://getclipkeeper.com' },
           { name: 'Blog', url: 'https://getclipkeeper.com/blog' },
           { name: post.title, url: `https://getclipkeeper.com/blog/${post.slug}` },
-        ]}
-      />
-      <FAQPageSchema
-        faqs={[
-          {
-            question: 'How long should a basketball recruiting video be?',
-            answer: 'Keep it under 4-5 minutes. College coaches are busy and will decide quickly. Lead with your best clip and show variety. 10-15 strong plays is better than 30 mediocre ones.',
-          },
-          {
-            question: 'What should I include in a basketball recruiting video?',
-            answer: 'Show variety: scoring from different spots, ball handling, defense, rebounding, and basketball IQ plays. Position-specific skills matter most - guards show handles and shooting, bigs show post moves and rim protection.',
-          },
-          {
-            question: 'Do I need professional editing for a basketball highlight video?',
-            answer: "No! Coaches care about the plays, not fancy transitions. A clean edit with your best clips is more effective than over-produced content. Use free tools like CapCut or iMovie.",
-          },
-          {
-            question: 'When should high school basketball players start making recruiting videos?',
-            answer: 'Start collecting clips freshman year. Most active recruiting happens junior year, so have a polished video ready by then. Update it each season with better plays.',
-          },
-          {
-            question: 'Can I use AAU and travel ball clips in my recruiting video?',
-            answer: 'Absolutely! AAU, travel ball, and high school clips are all valid. Mix your best plays regardless of where they happened. Competition level matters - include your best AAU tournament performances.',
-          },
         ]}
       />
 
@@ -312,11 +290,23 @@ export default function BlogPost() {
           league or tournament uses any video platform.
         </p>
 
+        <h3 className="font-semibold text-gray-900 mt-6 mb-2">
+          What if my athlete plays multiple sports?
+        </h3>
+        <p className="text-gray-600 mb-4">
+          Many college programs value multi-sport athletes. Consider creating a{' '}
+          <Link href="/blog/multi-sport-highlight-reel" className="text-green-600 hover:underline">
+            multi-sport highlight reel
+          </Link>{' '}
+          that showcases overall athleticism and versatility, especially for DIII programs.
+        </p>
+
         <CTASection
           title="Get Your GameChanger Clips"
           description="Download all your basketball highlights and start building that recruiting video today."
         />
 
+        <AuthorBio />
         <RelatedPosts posts={relatedPosts} />
       </BlogLayout>
     </>

@@ -11,7 +11,9 @@ import {
   SectionHeading,
   RelatedPosts,
 } from '@/components/blog';
-import { ArticleSchema, HowToSchema, BreadcrumbSchema, FAQPageSchema } from '@/components/StructuredData';
+import { ArticleSchema, HowToSchema, BreadcrumbSchema } from '@/components/StructuredData';
+import AuthorBio from '@/components/blog/AuthorBio';
+import QuickAnswer from '@/components/blog/QuickAnswer';
 
 const SLUG = 'share-gamechanger-to-instagram-tiktok';
 
@@ -28,6 +30,7 @@ export default function BlogPost() {
         description={post.description}
         datePublished={post.publishedAt}
         slug={post.slug}
+        readingTime={post.readingTime}
       />
       <HowToSchema
         name="How to Share GameChanger Videos on Social Media"
@@ -46,27 +49,6 @@ export default function BlogPost() {
           { name: post.title, url: `https://getclipkeeper.com/blog/${post.slug}` },
         ]}
       />
-      <FAQPageSchema
-        faqs={[
-          {
-            question: 'Can I post GameChanger videos directly to Instagram?',
-            answer: 'No, GameChanger only lets you share links, not actual video files. You need to download the video with ClipKeeper first, then upload it natively to Instagram.',
-          },
-          {
-            question: 'What video format does TikTok need?',
-            answer: 'TikTok works best with MP4 files in 9:16 vertical format. GameChanger videos are horizontal, so you may want to crop or add borders using an editor like CapCut.',
-          },
-          {
-            question: 'How do I add music to GameChanger clips for social media?',
-            answer: "Download your clip with ClipKeeper, then add music using Instagram or TikTok's built-in music library when you create your post. Or use CapCut to add music before uploading.",
-          },
-          {
-            question: "What's the best aspect ratio for Instagram Reels?",
-            answer: '9:16 vertical (1080x1920) is best for Reels. GameChanger videos are horizontal, so use CapCut or similar to crop, add borders, or convert to vertical format.',
-          },
-        ]}
-      />
-
       <BlogLayout
         title={post.title}
         description="Show off your kid's highlights! Here's how to get GameChanger clips onto Instagram and TikTok."
@@ -74,6 +56,8 @@ export default function BlogPost() {
         readingTime={post.readingTime}
         slug={post.slug}
       >
+        <QuickAnswer answer="Download the GameChanger video with ClipKeeper, convert to MP4 if needed, transfer to your phone via AirDrop or cloud storage, then upload directly to Instagram Reels or TikTok." />
+
         <SectionHeading number={1}>The Problem: GameChanger Has No Share Button</SectionHeading>
         <p className="text-gray-600 mb-6">
           Your kid just made an incredible play. You want to share it with family, friends,
@@ -216,6 +200,8 @@ export default function BlogPost() {
           title="Ready to Go Viral?"
           description="Download your GameChanger highlights and share them with the world."
         />
+
+        <AuthorBio />
 
         <RelatedPosts posts={relatedPosts} />
       </BlogLayout>

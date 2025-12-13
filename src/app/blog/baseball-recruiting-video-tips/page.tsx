@@ -11,7 +11,9 @@ import {
   SectionHeading,
   RelatedPosts,
 } from '@/components/blog';
-import { ArticleSchema, HowToSchema, BreadcrumbSchema, FAQPageSchema } from '@/components/StructuredData';
+import { ArticleSchema, HowToSchema, BreadcrumbSchema } from '@/components/StructuredData';
+import AuthorBio from '@/components/blog/AuthorBio';
+import QuickAnswer from '@/components/blog/QuickAnswer';
 
 const SLUG = 'baseball-recruiting-video-tips';
 
@@ -29,6 +31,7 @@ export default function BlogPost() {
         datePublished={post.publishedAt}
         dateModified={post.updatedAt}
         slug={post.slug}
+        readingTime={post.readingTime}
       />
       <HowToSchema
         name="How to Make a Baseball Recruiting Video"
@@ -47,31 +50,6 @@ export default function BlogPost() {
           { name: post.title, url: `https://getclipkeeper.com/blog/${post.slug}` },
         ]}
       />
-      <FAQPageSchema
-        faqs={[
-          {
-            question: 'When should my kid start making baseball recruiting videos?',
-            answer: 'Most serious recruiting starts freshman/sophomore year of high school for baseball. Start building clips earlier so you have options. Even 12U travel ball clips can show natural talent.',
-          },
-          {
-            question: 'Do I need professional video editing for a recruiting video?',
-            answer: "No! Coaches care about the plays, not fancy transitions. A simple, clean edit with good clips is more effective than an over-produced video with mediocre content.",
-          },
-          {
-            question: 'What format should I export my baseball recruiting video?',
-            answer: 'Export as MP4 at 1080p resolution. This works everywhere - YouTube, email, and recruiting platforms like NCSA.',
-          },
-          {
-            question: 'How long should a baseball recruiting video be?',
-            answer: "Keep it under 3-4 minutes total with 8-12 clips showing variety. Lead with your best clip to grab attention. Quality over quantity - only include your best plays.",
-          },
-          {
-            question: 'What clips should I include in a baseball recruiting video?',
-            answer: 'Include at-bats showing good swing mechanics, hard-hit balls, defense plays at your primary position, arm strength throws, and base running clips. Show variety in your skills.',
-          },
-        ]}
-      />
-
       <BlogLayout
         title={post.title}
         description="Help your athlete get recruited with a professional-quality highlight video built from GameChanger clips."
@@ -79,6 +57,8 @@ export default function BlogPost() {
         readingTime={post.readingTime}
         slug={post.slug}
       >
+        <QuickAnswer answer="Download your best GameChanger clips with ClipKeeper, select 8-12 highlights showing different skills, edit in CapCut or iMovie, and add player info. Keep it under 3-4 minutes with your best clip first." />
+
         <SectionHeading number={1}>Why Baseball Recruiting Videos Matter</SectionHeading>
         <p className="text-gray-600 mb-6">
           College coaches don&apos;t have time to attend every travel ball game. They rely
@@ -227,10 +207,25 @@ export default function BlogPost() {
           ? It only takes a few seconds with free tools.
         </p>
 
+        <h3 className="font-semibold text-gray-900 mt-6 mb-2">
+          What if my kid plays multiple sports?
+        </h3>
+        <p className="text-gray-600 mb-4">
+          Multi-sport athletes are highly valued by many college programs. Consider creating
+          a{' '}
+          <Link href="/blog/multi-sport-highlight-reel" className="text-green-600 hover:underline">
+            multi-sport highlight reel
+          </Link>{' '}
+          that showcases overall athleticism, especially for DIII schools that appreciate
+          well-rounded athletes.
+        </p>
+
         <CTASection
           title="Get Your GameChanger Clips"
           description="Download all your athlete's highlights and start building that recruiting video today."
         />
+
+        <AuthorBio />
 
         <RelatedPosts posts={relatedPosts} />
       </BlogLayout>

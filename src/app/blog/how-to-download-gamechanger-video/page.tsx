@@ -11,7 +11,9 @@ import {
   YouTubeEmbed,
   RelatedPosts,
 } from '@/components/blog';
-import { ArticleSchema, HowToSchema, BreadcrumbSchema, FAQPageSchema, VideoSchema } from '@/components/StructuredData';
+import AuthorBio from '@/components/blog/AuthorBio';
+import QuickAnswer from '@/components/blog/QuickAnswer';
+import { ArticleSchema, HowToSchema, BreadcrumbSchema, VideoSchema } from '@/components/StructuredData';
 import Link from 'next/link';
 
 const SLUG = 'how-to-download-gamechanger-video';
@@ -31,6 +33,7 @@ export default function BlogPost() {
         datePublished={post.publishedAt}
         dateModified={post.updatedAt}
         slug={post.slug}
+        readingTime={post.readingTime}
       />
       <HowToSchema
         name="How to Download GameChanger Videos"
@@ -49,27 +52,7 @@ export default function BlogPost() {
           { name: post.title, url: `https://getclipkeeper.com/blog/${post.slug}` },
         ]}
       />
-      <FAQPageSchema
-        faqs={[
-          {
-            question: 'Is it legal to download GameChanger videos?',
-            answer: "Yes. You're downloading videos of your own children that you already have viewing access to through your GameChanger subscription. ClipKeeper simply helps you exercise your right to backup your personal family memories.",
-          },
-          {
-            question: 'Why are GameChanger videos downloaded as .ts files?',
-            answer: "Chrome's security policies prevent in-browser video conversion. The .ts (Transport Stream) format is actually GameChanger's original format - you're getting the highest quality video. Most players like VLC and Windows Media Player play .ts files natively.",
-          },
-          {
-            question: 'Can I download all my GameChanger videos at once?',
-            answer: 'The free version lets you download 5 clips per week. ClipKeeper Pro ($29/year) includes unlimited downloads and batch download of entire games with one click.',
-          },
-          {
-            question: 'How do I convert .ts files to MP4?',
-            answer: 'You can convert .ts files to MP4 using free tools like VLC Media Player or HandBrake. The conversion only takes a few seconds per clip.',
-          },
-        ]}
-      />
-      <VideoSchema
+            <VideoSchema
         name="How to Download GameChanger Videos - Tutorial"
         description="Step-by-step tutorial showing how to download GameChanger video clips using the ClipKeeper Chrome extension. Save your kids' sports highlights forever."
         thumbnailUrl="https://img.youtube.com/vi/X9D9ESPdEnc/maxresdefault.jpg"
@@ -87,6 +70,8 @@ export default function BlogPost() {
       >
         <YouTubeEmbed videoId="X9D9ESPdEnc" title="How to Download GameChanger Videos - Tutorial" />
 
+        <QuickAnswer answer="Install ClipKeeper (free Chrome extension), go to GameChanger at web.gc.com, and click the green download button that appears next to any video clip. Your videos save instantly to your computer." />
+
         <SectionHeading number={1}>Why You Can&apos;t Download GameChanger Videos</SectionHeading>
         <p className="text-gray-600 mb-6">
           If you&apos;re a parent with kids playing youth baseball, softball, or basketball,
@@ -97,7 +82,11 @@ export default function BlogPost() {
           But there&apos;s a catch: <strong>you can&apos;t download those videos</strong>.
           They&apos;re stuck on GameChanger&apos;s platform. If you cancel your $99/year
           subscription, or if GameChanger changes their service, you lose access to
-          years of precious memories.
+          years of precious memories. Learn more about{' '}
+          <Link href="/blog/gamechanger-video-storage-retention" className="text-green-600 hover:underline">
+            what happens to your GameChanger videos
+          </Link>{' '}
+          when the season ends.
         </p>
 
         <SectionHeading number={2}>How to Download GameChanger Videos with ClipKeeper</SectionHeading>
@@ -207,9 +196,16 @@ export default function BlogPost() {
         <p className="text-gray-600 mb-4">
           The free version lets you download 5 clips per week. ClipKeeper Pro ($29/year)
           includes unlimited downloads and batch download of entire games with one click.
+          For full season backups, see our guide on{' '}
+          <Link href="/blog/backup-gamechanger-season" className="text-green-600 hover:underline">
+            how to back up your entire GameChanger season
+          </Link>
+          .
         </p>
 
         <CTASection />
+
+        <AuthorBio />
 
         <RelatedPosts posts={relatedPosts} />
       </BlogLayout>

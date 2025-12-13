@@ -11,7 +11,9 @@ import {
   SectionHeading,
   RelatedPosts,
 } from '@/components/blog';
-import { ArticleSchema, HowToSchema, BreadcrumbSchema, FAQPageSchema } from '@/components/StructuredData';
+import { ArticleSchema, HowToSchema, BreadcrumbSchema } from '@/components/StructuredData';
+import AuthorBio from '@/components/blog/AuthorBio';
+import QuickAnswer from '@/components/blog/QuickAnswer';
 
 const SLUG = 'play-ts-file-mac-windows';
 
@@ -28,6 +30,7 @@ export default function BlogPost() {
         description={post.description}
         datePublished={post.publishedAt}
         slug={post.slug}
+        readingTime={post.readingTime}
       />
       <HowToSchema
         name="How to Play .TS Video Files"
@@ -45,26 +48,6 @@ export default function BlogPost() {
           { name: post.title, url: `https://getclipkeeper.com/blog/${post.slug}` },
         ]}
       />
-      <FAQPageSchema
-        faqs={[
-          {
-            question: 'What program opens .ts files on Mac?',
-            answer: 'VLC Media Player (free from videolan.org) is the best option for Mac. IINA is another excellent free, native Mac video player that handles .ts files perfectly.',
-          },
-          {
-            question: 'Can Windows Media Player play .ts files?',
-            answer: 'Yes, Windows Media Player on Windows 10/11 can play most .ts files. If you have issues, VLC Media Player is a free alternative that plays everything.',
-          },
-          {
-            question: 'Why does GameChanger use .ts format?',
-            answer: 'GameChanger uses .ts (Transport Stream) because it is optimized for streaming video over the internet. It handles network interruptions well and is the industry standard for video delivery.',
-          },
-          {
-            question: 'Is .ts better quality than MP4?',
-            answer: 'The .ts file from GameChanger is the original, uncompressed video. Converting to MP4 may actually reduce quality slightly (though usually not noticeable). For archival, keep the original .ts files.',
-          },
-        ]}
-      />
 
       <BlogLayout
         title={post.title}
@@ -73,6 +56,8 @@ export default function BlogPost() {
         readingTime={post.readingTime}
         slug={post.slug}
       >
+        <QuickAnswer answer="Download VLC Media Player (free from videolan.org) and open your .ts file with it. VLC plays .ts files perfectly on Mac, Windows, iPhone, and Android without any conversion needed." />
+
         <SectionHeading number={1}>What is a .TS File?</SectionHeading>
         <p className="text-gray-600 mb-6">
           A <strong>.ts file</strong> (MPEG Transport Stream) is a video format commonly used for
@@ -233,6 +218,7 @@ export default function BlogPost() {
           description="Get ClipKeeper and start downloading your videos today. They'll play on any device with VLC."
         />
 
+        <AuthorBio />
         <RelatedPosts posts={relatedPosts} />
       </BlogLayout>
     </>

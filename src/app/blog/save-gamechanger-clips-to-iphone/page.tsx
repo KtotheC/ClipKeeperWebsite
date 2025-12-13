@@ -11,7 +11,9 @@ import {
   SectionHeading,
   RelatedPosts,
 } from '@/components/blog';
-import { ArticleSchema, HowToSchema, BreadcrumbSchema, FAQPageSchema } from '@/components/StructuredData';
+import { ArticleSchema, HowToSchema, BreadcrumbSchema } from '@/components/StructuredData';
+import AuthorBio from '@/components/blog/AuthorBio';
+import QuickAnswer from '@/components/blog/QuickAnswer';
 
 const SLUG = 'save-gamechanger-clips-to-iphone';
 
@@ -28,6 +30,7 @@ export default function BlogPost() {
         description={post.description}
         datePublished={post.publishedAt}
         slug={post.slug}
+        readingTime={post.readingTime}
       />
       <HowToSchema
         name="How to Save GameChanger Clips to iPhone"
@@ -45,27 +48,6 @@ export default function BlogPost() {
           { name: post.title, url: `https://getclipkeeper.com/blog/${post.slug}` },
         ]}
       />
-      <FAQPageSchema
-        faqs={[
-          {
-            question: 'Can I save GameChanger videos directly to my iPhone?',
-            answer: "Chrome extensions don't work on mobile browsers, so you need to download on a desktop computer first, then transfer via AirDrop, iCloud, or email. It only takes an extra minute.",
-          },
-          {
-            question: 'Do I need a computer to download GameChanger clips?',
-            answer: 'Yes, ClipKeeper is a Chrome extension that requires a desktop browser. Once downloaded, you can easily transfer files to your iPhone via AirDrop (Mac) or cloud storage (Windows).',
-          },
-          {
-            question: 'What format are GameChanger videos when saved to iPhone?',
-            answer: 'Videos download as .ts files, which iPhones can play natively. If you need MP4 format for certain apps, you can convert them using free tools like VLC.',
-          },
-          {
-            question: 'Can I share saved GameChanger clips via iMessage or text?',
-            answer: 'Yes! Once the video is in your Camera Roll, you can share it anywhere - iMessage, text, email, Instagram, TikTok, or any other app.',
-          },
-        ]}
-      />
-
       <BlogLayout
         title={post.title}
         description="Get your GameChanger sports clips on your iPhone so you can share them anywhere."
@@ -73,6 +55,8 @@ export default function BlogPost() {
         readingTime={post.readingTime}
         slug={post.slug}
       >
+        <QuickAnswer answer="Download GameChanger videos to your computer using ClipKeeper (Chrome extension), then transfer to iPhone via AirDrop (Mac) or cloud storage (Windows). Save to Camera Roll and share anywhere." />
+
         <SectionHeading number={1}>The Problem: GameChanger Videos Stuck on the Web</SectionHeading>
         <p className="text-gray-600 mb-6">
           You want to show grandma that amazing catch your kid made. Or post it to Instagram.
@@ -182,6 +166,8 @@ export default function BlogPost() {
           title="Start Saving Your Memories"
           description="Download ClipKeeper free and get your GameChanger clips on your iPhone today."
         />
+
+        <AuthorBio />
 
         <RelatedPosts posts={relatedPosts} />
       </BlogLayout>

@@ -11,7 +11,9 @@ import {
   SectionHeading,
   RelatedPosts,
 } from '@/components/blog';
-import { ArticleSchema, HowToSchema, BreadcrumbSchema, FAQPageSchema } from '@/components/StructuredData';
+import { ArticleSchema, HowToSchema, BreadcrumbSchema } from '@/components/StructuredData';
+import AuthorBio from '@/components/blog/AuthorBio';
+import QuickAnswer from '@/components/blog/QuickAnswer';
 
 const SLUG = 'convert-ts-to-mp4';
 
@@ -29,6 +31,7 @@ export default function BlogPost() {
         datePublished={post.publishedAt}
         dateModified={post.updatedAt}
         slug={post.slug}
+        readingTime={post.readingTime}
       />
       <HowToSchema
         name="How to Convert .TS to MP4"
@@ -47,30 +50,6 @@ export default function BlogPost() {
           { name: post.title, url: `https://getclipkeeper.com/blog/${post.slug}` },
         ]}
       />
-      <FAQPageSchema
-        faqs={[
-          {
-            question: 'Does converting TS to MP4 reduce video quality?',
-            answer: 'Technically yes - any re-encoding involves some quality loss. But with proper settings (H.264 codec, high bitrate), the difference is invisible to the human eye.',
-          },
-          {
-            question: 'How long does it take to convert TS to MP4?',
-            answer: "A typical 30-second clip takes about 10-30 seconds to convert, depending on your computer's speed. Longer videos take proportionally longer.",
-          },
-          {
-            question: 'Can I convert TS files to MP4 on my phone?',
-            answer: "Yes, but it's easier on desktop. VLC for iOS/Android can convert files, or use an online converter like CloudConvert.",
-          },
-          {
-            question: 'What is the best free TS to MP4 converter?',
-            answer: 'VLC Media Player is the best free option - it works on Mac and Windows, handles conversion perfectly, and is completely free with no watermarks or limitations.',
-          },
-          {
-            question: 'Can I batch convert multiple TS files to MP4?',
-            answer: 'Yes! HandBrake is best for batch conversion - add all files to a queue and convert them automatically. VLC can also batch convert via its command line interface.',
-          },
-        ]}
-      />
 
       <BlogLayout
         title={post.title}
@@ -79,6 +58,8 @@ export default function BlogPost() {
         readingTime={post.readingTime}
         slug={post.slug}
       >
+        <QuickAnswer answer="Open VLC Media Player, go to Media > Convert/Save, add your .ts file, select 'Video - H.264 + MP3 (MP4)' profile, choose a destination, and click Start. Free, no watermarks." />
+
         <SectionHeading number={1}>Why Convert TS to MP4?</SectionHeading>
         <p className="text-gray-600 mb-6">
           First, you need to{' '}
@@ -274,6 +255,7 @@ export default function BlogPost() {
           description="Before you can convert, you need to download your GameChanger videos. ClipKeeper makes it easy."
         />
 
+        <AuthorBio />
         <RelatedPosts posts={relatedPosts} />
       </BlogLayout>
     </>

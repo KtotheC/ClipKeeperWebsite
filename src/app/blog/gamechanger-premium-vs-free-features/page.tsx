@@ -10,7 +10,8 @@ import {
   SectionHeading,
   RelatedPosts,
 } from '@/components/blog';
-import { ArticleSchema, BreadcrumbSchema, FAQPageSchema } from '@/components/StructuredData';
+import { ArticleSchema, BreadcrumbSchema } from '@/components/StructuredData';
+import AuthorBio from '@/components/blog/AuthorBio';
 
 const SLUG = 'gamechanger-premium-vs-free-features';
 
@@ -27,6 +28,7 @@ export default function BlogPost() {
         description={post.description}
         datePublished={post.publishedAt}
         slug={post.slug}
+        readingTime={post.readingTime}
       />
       <BreadcrumbSchema
         items={[
@@ -35,27 +37,6 @@ export default function BlogPost() {
           { name: post.title, url: `https://getclipkeeper.com/blog/${post.slug}` },
         ]}
       />
-      <FAQPageSchema
-        faqs={[
-          {
-            question: 'Is GameChanger Premium worth $99/year?',
-            answer: 'It depends on your priorities. Premium gives you HD streaming, unlimited storage, and advanced stats. But if your main goal is keeping videos forever, Premium still does not include downloads - you would need ClipKeeper for that.',
-          },
-          {
-            question: 'What video features does GameChanger Premium include?',
-            answer: 'Premium includes HD video quality (vs SD on free), unlimited video storage, and ad-free viewing. However, it does not include the ability to download videos to keep.',
-          },
-          {
-            question: 'Can I download videos with GameChanger Premium?',
-            answer: 'No. Even with Premium at $99/year, you cannot download your video clips. You can only stream them on the platform. For downloads, you need a tool like ClipKeeper.',
-          },
-          {
-            question: "What's included in the free version of GameChanger?",
-            answer: 'Free GameChanger includes live scorekeeping, team stats, and the ability to watch video clips online (in standard definition). Video storage may be limited compared to Premium.',
-          },
-        ]}
-      />
-
       <BlogLayout
         title={post.title}
         description="Is GameChanger Premium worth $99/year? Here's what you get (and don't get) with the paid subscription."
@@ -231,6 +212,8 @@ export default function BlogPost() {
           title="Keep Your Videos Forever"
           description="Download your GameChanger clips and own them outright. No subscription lock-in."
         />
+
+        <AuthorBio />
 
         <RelatedPosts posts={relatedPosts} />
       </BlogLayout>

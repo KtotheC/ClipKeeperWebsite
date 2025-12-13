@@ -10,7 +10,8 @@ import {
   SectionHeading,
   RelatedPosts,
 } from '@/components/blog';
-import { ArticleSchema, BreadcrumbSchema, FAQPageSchema } from '@/components/StructuredData';
+import { ArticleSchema, BreadcrumbSchema } from '@/components/StructuredData';
+import AuthorBio from '@/components/blog/AuthorBio';
 
 const SLUG = 'sidelinehd-vs-gamechanger';
 
@@ -28,40 +29,13 @@ export default function BlogPost() {
         datePublished={post.publishedAt}
         dateModified={post.updatedAt}
         slug={post.slug}
+        readingTime={post.readingTime}
       />
       <BreadcrumbSchema
         items={[
           { name: 'Home', url: 'https://getclipkeeper.com' },
           { name: 'Blog', url: 'https://getclipkeeper.com/blog' },
           { name: post.title, url: `https://getclipkeeper.com/blog/${post.slug}` },
-        ]}
-      />
-      <FAQPageSchema
-        faqs={[
-          {
-            question: 'Is SidelineHD better than GameChanger?',
-            answer: 'It depends on your priorities. SidelineHD offers higher video quality streams if you invest in their camera setup. GameChanger is better for all-in-one scorekeeping, stats, and automatic highlight clips.',
-          },
-          {
-            question: 'Which platform has better video quality - SidelineHD or GameChanger?',
-            answer: 'SidelineHD generally offers higher quality streams, especially with their recommended camera setup. GameChanger video quality has improved significantly and is good enough for most families.',
-          },
-          {
-            question: 'Can you download videos from SidelineHD?',
-            answer: 'SidelineHD has limited download options. For GameChanger, you can download videos using ClipKeeper, a Chrome extension that adds a download button to every clip.',
-          },
-          {
-            question: 'How much does SidelineHD cost vs GameChanger?',
-            answer: "SidelineHD costs around $25-50/month plus camera hardware. GameChanger Premium is about $99/year or $12.99/month. GameChanger's free tier includes basic features.",
-          },
-          {
-            question: 'Which platform is better for creating recruiting videos?',
-            answer: "GameChanger is better for recruiting videos because of automatic highlight clips and easy downloads via ClipKeeper. SidelineHD's full-game streams require manual editing to create highlights.",
-          },
-          {
-            question: 'Can you use both SidelineHD and GameChanger together?',
-            answer: 'Yes! Many teams use GameChanger for stats and auto-generated clips while using SidelineHD for high-quality live streaming to remote family members.',
-          },
         ]}
       />
 
@@ -309,6 +283,7 @@ export default function BlogPost() {
           description="Download your GameChanger highlights with ClipKeeper and keep them forever."
         />
 
+        <AuthorBio />
         <RelatedPosts posts={relatedPosts} />
       </BlogLayout>
     </>

@@ -11,7 +11,9 @@ import {
   SectionHeading,
   RelatedPosts,
 } from '@/components/blog';
-import { ArticleSchema, HowToSchema, BreadcrumbSchema, FAQPageSchema } from '@/components/StructuredData';
+import { ArticleSchema, HowToSchema, BreadcrumbSchema } from '@/components/StructuredData';
+import AuthorBio from '@/components/blog/AuthorBio';
+import QuickAnswer from '@/components/blog/QuickAnswer';
 
 const SLUG = 'download-gamechanger-soccer-clips';
 
@@ -28,6 +30,7 @@ export default function BlogPost() {
         description={post.description}
         datePublished={post.publishedAt}
         slug={post.slug}
+        readingTime={post.readingTime}
       />
       <HowToSchema
         name="How to Download GameChanger Soccer Videos"
@@ -46,26 +49,6 @@ export default function BlogPost() {
           { name: post.title, url: `https://getclipkeeper.com/blog/${post.slug}` },
         ]}
       />
-      <FAQPageSchema
-        faqs={[
-          {
-            question: 'Does GameChanger have video for soccer?',
-            answer: 'Yes! GameChanger supports soccer with automatic video clips for goals, assists, saves, and other key plays. If your team uses GameChanger with video enabled, all plays are recorded.',
-          },
-          {
-            question: 'Are soccer video clips different from baseball clips?',
-            answer: 'Soccer clips tend to be slightly longer since the sport has continuous play rather than discrete pitches. The download process is identical - just click the download button.',
-          },
-          {
-            question: 'Can I use GameChanger soccer clips for club recruiting?',
-            answer: 'Absolutely! Download your best clips with ClipKeeper and create a highlight reel for ECNL, GA, MLS NEXT, or college coaches.',
-          },
-          {
-            question: 'Does ClipKeeper work for futsal or indoor soccer?',
-            answer: 'ClipKeeper works with any video on GameChanger, including futsal and indoor soccer if your league uses the platform.',
-          },
-        ]}
-      />
 
       <BlogLayout
         title={post.title}
@@ -74,6 +57,8 @@ export default function BlogPost() {
         readingTime={post.readingTime}
         slug={post.slug}
       >
+        <QuickAnswer answer="Install the free ClipKeeper Chrome extension, go to web.gc.com, navigate to your soccer game's video section, and click the green download button on any goal, assist, or save clip." />
+
         <SectionHeading number={1}>Soccer Never Stops</SectionHeading>
         <p className="text-gray-600 mb-6">
           Unlike seasonal sports, soccer runs year-round. Fall outdoor, spring outdoor,
@@ -236,8 +221,22 @@ export default function BlogPost() {
         </h3>
         <p className="text-gray-600 mb-4">
           Yes! As long as the clips are still available on GameChanger, you can download them.
-          We recommend downloading regularly so you don&apos;t lose access if GameChanger
-          removes older content.
+          We recommend downloading regularly - learn more about{' '}
+          <Link href="/blog/gamechanger-video-storage-retention" className="text-green-600 hover:underline">
+            GameChanger video retention policies
+          </Link>{' '}
+          and why backing up matters.
+        </p>
+
+        <h3 className="font-semibold text-gray-900 mt-6 mb-2">
+          How do I back up an entire soccer season?
+        </h3>
+        <p className="text-gray-600 mb-4">
+          ClipKeeper Pro includes batch downloading for efficiency. See our complete guide on{' '}
+          <Link href="/blog/backup-gamechanger-season" className="text-green-600 hover:underline">
+            backing up your entire GameChanger season
+          </Link>
+          .
         </p>
 
         <h3 className="font-semibold text-gray-900 mt-6 mb-2">
@@ -249,11 +248,24 @@ export default function BlogPost() {
           reel concise - coaches won&apos;t watch a 20-minute video.
         </p>
 
+        <h3 className="font-semibold text-gray-900 mt-6 mb-2">
+          What if my athlete plays multiple sports?
+        </h3>
+        <p className="text-gray-600 mb-4">
+          ClipKeeper works with all sports on GameChanger. For multi-sport athletes,
+          check out our guide on{' '}
+          <Link href="/blog/multi-sport-highlight-reel" className="text-green-600 hover:underline">
+            creating a multi-sport highlight reel
+          </Link>
+          .
+        </p>
+
         <CTASection
           title="Every Goal Deserves to Be Saved"
           description="Download your soccer highlights and keep them forever. From rec league to club, every memory matters."
         />
 
+        <AuthorBio />
         <RelatedPosts posts={relatedPosts} />
       </BlogLayout>
     </>

@@ -11,7 +11,9 @@ import {
   SectionHeading,
   RelatedPosts,
 } from '@/components/blog';
-import { ArticleSchema, HowToSchema, BreadcrumbSchema, FAQPageSchema } from '@/components/StructuredData';
+import { ArticleSchema, HowToSchema, BreadcrumbSchema } from '@/components/StructuredData';
+import AuthorBio from '@/components/blog/AuthorBio';
+import QuickAnswer from '@/components/blog/QuickAnswer';
 
 const SLUG = 'download-gamechanger-basketball-clips';
 
@@ -28,6 +30,7 @@ export default function BlogPost() {
         description={post.description}
         datePublished={post.publishedAt}
         slug={post.slug}
+        readingTime={post.readingTime}
       />
       <HowToSchema
         name="How to Download GameChanger Basketball Videos"
@@ -46,26 +49,6 @@ export default function BlogPost() {
           { name: post.title, url: `https://getclipkeeper.com/blog/${post.slug}` },
         ]}
       />
-      <FAQPageSchema
-        faqs={[
-          {
-            question: 'Does ClipKeeper work for GameChanger basketball videos?',
-            answer: 'Yes! ClipKeeper works for all sports on GameChanger including basketball, baseball, softball, soccer, volleyball, and more. The download process is identical.',
-          },
-          {
-            question: 'Can I download an entire basketball game from GameChanger?',
-            answer: 'With ClipKeeper Pro ($29/year), you can batch download all clips from a basketball game with one click. The free version allows 5 downloads per week.',
-          },
-          {
-            question: 'How do I download basketball highlights for a recruiting video?',
-            answer: 'Download your best clips with ClipKeeper, then use a free video editor like CapCut, iMovie, or DaVinci Resolve to arrange them into a highlight reel for college coaches.',
-          },
-          {
-            question: 'Does GameChanger have video for youth basketball leagues?',
-            answer: 'Yes, if your basketball team uses GameChanger with video enabled, all plays (points, assists, rebounds, etc.) are automatically clipped and available for download.',
-          },
-        ]}
-      />
 
       <BlogLayout
         title={post.title}
@@ -74,6 +57,8 @@ export default function BlogPost() {
         readingTime={post.readingTime}
         slug={post.slug}
       >
+        <QuickAnswer answer="Install the free ClipKeeper Chrome extension, go to web.gc.com, navigate to your basketball game's video section, and click the green download button on any clip to save it instantly." />
+
         <SectionHeading number={1}>Basketball Season is Here</SectionHeading>
         <p className="text-gray-600 mb-6">
           It&apos;s basketball season, and GameChanger is capturing every made shot, assist,
@@ -266,11 +251,35 @@ export default function BlogPost() {
           .
         </p>
 
+        <h3 className="font-semibold text-gray-900 mt-6 mb-2">
+          How do I back up an entire season?
+        </h3>
+        <p className="text-gray-600 mb-4">
+          For full season backups, ClipKeeper Pro includes batch downloading. See our guide on{' '}
+          <Link href="/blog/backup-gamechanger-season" className="text-green-600 hover:underline">
+            backing up your entire GameChanger season
+          </Link>
+          .
+        </p>
+
+        <h3 className="font-semibold text-gray-900 mt-6 mb-2">
+          What if my athlete also plays other sports?
+        </h3>
+        <p className="text-gray-600 mb-4">
+          You can download clips from any sport on GameChanger. For multi-sport athletes,
+          check out our guide on{' '}
+          <Link href="/blog/multi-sport-highlight-reel" className="text-green-600 hover:underline">
+            creating a multi-sport highlight reel
+          </Link>
+          .
+        </p>
+
         <CTASection
           title="Don't Miss a Single Highlight"
           description="Download every dunk, three-pointer, and game-winning shot. Keep your basketball memories forever."
         />
 
+        <AuthorBio />
         <RelatedPosts posts={relatedPosts} />
       </BlogLayout>
     </>

@@ -10,7 +10,8 @@ import {
   SectionHeading,
   RelatedPosts,
 } from '@/components/blog';
-import { ArticleSchema, BreadcrumbSchema, FAQPageSchema } from '@/components/StructuredData';
+import { ArticleSchema, BreadcrumbSchema } from '@/components/StructuredData';
+import AuthorBio from '@/components/blog/AuthorBio';
 
 const SLUG = 'screen-record-gamechanger-alternative';
 
@@ -27,6 +28,7 @@ export default function BlogPost() {
         description={post.description}
         datePublished={post.publishedAt}
         slug={post.slug}
+        readingTime={post.readingTime}
       />
       <BreadcrumbSchema
         items={[
@@ -35,27 +37,6 @@ export default function BlogPost() {
           { name: post.title, url: `https://getclipkeeper.com/blog/${post.slug}` },
         ]}
       />
-      <FAQPageSchema
-        faqs={[
-          {
-            question: 'Why is screen recording GameChanger a bad idea?',
-            answer: 'Screen recording results in lower video quality, captures notifications and mouse cursors, requires watching in real-time, and produces echoey audio. Direct downloads preserve original HD quality.',
-          },
-          {
-            question: 'What quality do screen recorded GameChanger videos have?',
-            answer: 'Screen recordings are compressed and re-encoded, resulting in pixelated video that looks noticeably worse than the original. Direct downloads give you the original HD quality files.',
-          },
-          {
-            question: 'Is there a faster way to save GameChanger clips?',
-            answer: 'Yes! ClipKeeper is a Chrome extension that adds a download button to GameChanger. One click downloads the original HD video in seconds - no waiting through playback.',
-          },
-          {
-            question: 'Do ClipKeeper downloads have watermarks or artifacts?',
-            answer: 'No. ClipKeeper downloads the original video files directly from GameChanger servers. No watermarks, no notifications, no mouse cursors - just clean HD video.',
-          },
-        ]}
-      />
-
       <BlogLayout
         title={post.title}
         description="Stop wasting time with low-quality screen recordings. There's a much better way to save GameChanger videos."
@@ -192,6 +173,8 @@ export default function BlogPost() {
           title="Stop Screen Recording Today"
           description="Get original HD quality videos with one click. No more wasted time."
         />
+
+        <AuthorBio />
 
         <RelatedPosts posts={relatedPosts} />
       </BlogLayout>

@@ -10,7 +10,8 @@ import {
   SectionHeading,
   RelatedPosts,
 } from '@/components/blog';
-import { ArticleSchema, BreadcrumbSchema, FAQPageSchema } from '@/components/StructuredData';
+import { ArticleSchema, BreadcrumbSchema } from '@/components/StructuredData';
+import AuthorBio from '@/components/blog/AuthorBio';
 
 const SLUG = 'sports-highlight-reel-maker';
 
@@ -27,6 +28,7 @@ export default function BlogPost() {
         description={post.description}
         datePublished={post.publishedAt}
         slug={post.slug}
+        readingTime={post.readingTime}
       />
       <BreadcrumbSchema
         items={[
@@ -35,27 +37,6 @@ export default function BlogPost() {
           { name: post.title, url: `https://getclipkeeper.com/blog/${post.slug}` },
         ]}
       />
-      <FAQPageSchema
-        faqs={[
-          {
-            question: "What's the best free app for sports highlight reels?",
-            answer: 'CapCut is the most popular free option - available on mobile and desktop with no watermark. iMovie is great for Apple users, and DaVinci Resolve offers professional-grade features for free.',
-          },
-          {
-            question: 'Can I make a youth sports highlight video on my phone?',
-            answer: 'Yes! CapCut and iMovie both have excellent mobile apps. You can edit entire highlight reels on your iPhone or Android phone and export directly to social media.',
-          },
-          {
-            question: 'How long should a youth sports highlight reel be?',
-            answer: 'Keep it under 3-4 minutes total. Start with your best clip to hook viewers, cut out dead time between plays, and use simple transitions. Quality over quantity.',
-          },
-          {
-            question: 'What editing software do professional highlight makers use?',
-            answer: 'Professionals typically use Adobe Premiere Pro or DaVinci Resolve. However, the free version of DaVinci Resolve has most features you need for sports highlights.',
-          },
-        ]}
-      />
-
       <BlogLayout
         title={post.title}
         description="Compare the best free video editors for creating youth sports highlight reels from your GameChanger clips."
@@ -237,10 +218,23 @@ export default function BlogPost() {
           multiple videos. Use a dedicated editor then upload to YouTube.
         </p>
 
+        <h3 className="font-semibold text-gray-900 mt-6 mb-2">
+          How do I combine clips from multiple sports?
+        </h3>
+        <p className="text-gray-600 mb-4">
+          Multi-sport athletes need a different approach. Check out our dedicated guide on{' '}
+          <Link href="/blog/multi-sport-highlight-reel" className="text-green-600 hover:underline">
+            creating a multi-sport highlight reel
+          </Link>{' '}
+          with tips on structure and organization.
+        </p>
+
         <CTASection
           title="Get Your Raw Clips First"
           description="Download your GameChanger videos with ClipKeeper, then edit them into an amazing highlight reel."
         />
+
+        <AuthorBio />
 
         <RelatedPosts posts={relatedPosts} />
       </BlogLayout>

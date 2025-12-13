@@ -11,7 +11,8 @@ import {
   RelatedPosts,
   FeatureList,
 } from '@/components/blog';
-import { ArticleSchema, BreadcrumbSchema, FAQPageSchema } from '@/components/StructuredData';
+import { ArticleSchema, BreadcrumbSchema } from '@/components/StructuredData';
+import AuthorBio from '@/components/blog/AuthorBio';
 
 const SLUG = 'why-cant-i-download-gamechanger-videos';
 
@@ -28,32 +29,13 @@ export default function BlogPost() {
         description={post.description}
         datePublished={post.publishedAt}
         slug={post.slug}
+        readingTime={post.readingTime}
       />
       <BreadcrumbSchema
         items={[
           { name: 'Home', url: 'https://getclipkeeper.com' },
           { name: 'Blog', url: 'https://getclipkeeper.com/blog' },
           { name: post.title, url: `https://getclipkeeper.com/blog/${post.slug}` },
-        ]}
-      />
-      <FAQPageSchema
-        faqs={[
-          {
-            question: "Why doesn't GameChanger let you download videos?",
-            answer: 'GameChanger uses a streaming-only model to keep content on their platform. Videos are designed for in-app viewing rather than local downloads, which keeps users engaged with their subscription.',
-          },
-          {
-            question: 'Is it against GameChanger terms to download videos?',
-            answer: "You're downloading videos of your own children that you already have access to through your subscription. ClipKeeper helps you backup your family's sports memories to your own devices.",
-          },
-          {
-            question: 'Can I download GameChanger videos on my phone?',
-            answer: 'ClipKeeper is a Chrome extension for desktop browsers. After downloading clips to your computer, you can easily transfer them to your phone via iCloud, Google Photos, or AirDrop.',
-          },
-          {
-            question: 'What happened to GameChanger download button?',
-            answer: 'GameChanger moved to a streaming-only model years ago. They focus on in-app viewing and sharing rather than allowing local downloads of video files.',
-          },
         ]}
       />
 
@@ -150,7 +132,12 @@ export default function BlogPost() {
         <SectionHeading number={4}>The Real Solution: ClipKeeper</SectionHeading>
         <p className="text-gray-600 mb-6">
           <strong>ClipKeeper</strong> is a Chrome extension built specifically for GameChanger parents.
-          It adds a download button to every video clip on the platform.
+          It adds a download button to every video clip on the platform. Beyond just convenience,
+          downloading protects you from{' '}
+          <Link href="/blog/gamechanger-video-storage-retention" className="text-green-600 hover:underline">
+            losing access to your videos
+          </Link>{' '}
+          if policies change or your subscription lapses.
         </p>
 
         <div className="bg-green-50 rounded-xl p-6 my-8 border border-green-100">
@@ -252,6 +239,7 @@ export default function BlogPost() {
           description="Join thousands of parents who backup their kids' sports memories with ClipKeeper."
         />
 
+        <AuthorBio />
         <RelatedPosts posts={relatedPosts} />
       </BlogLayout>
     </>
