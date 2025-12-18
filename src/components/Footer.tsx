@@ -9,7 +9,7 @@ export default function Footer() {
         <div className="flex flex-col md:flex-row items-center justify-between gap-8">
           {/* Logo and tagline */}
           <div className="flex flex-col items-center md:items-start gap-2">
-            <a href="#" className="flex items-center gap-2">
+            <a href="/" className="flex items-center gap-2">
               <div className="w-8 h-8 bg-green-500 rounded-lg flex items-center justify-center">
                 <Download className="w-5 h-5 text-white" />
               </div>
@@ -32,7 +32,7 @@ export default function Footer() {
             <a href="/terms" className="hover:text-white transition-colors">
               Terms of Service
             </a>
-            <a href="https://chrome.google.com/webstore/detail/beelllgidjaklbnacknjkghfibfpjhac" className="hover:text-white transition-colors">
+            <a href="https://chromewebstore.google.com/detail/clipkeeper-download-gamec/beelllgidjaklbnacknjkghfibfpjhac" className="hover:text-white transition-colors">
               Chrome Web Store
             </a>
             <a

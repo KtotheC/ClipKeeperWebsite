@@ -76,7 +76,7 @@ export function ProductSchema() {
     description:
       "Download and backup your kids' GameChanger sports videos. One-click downloads, smart file naming, and batch export for baseball, softball, and basketball clips.",
     url: 'https://getclipkeeper.com',
-    downloadUrl: 'https://chromewebstore.google.com',
+    downloadUrl: 'https://chromewebstore.google.com/detail/clipkeeper-download-gamec/beelllgidjaklbnacknjkghfibfpjhac',
     softwareVersion: '1.0',
     screenshot: 'https://getclipkeeper.com/og-image.jpg',
     featureList: [

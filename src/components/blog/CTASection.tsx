@@ -12,7 +12,7 @@ export default function CTASection({
   title = 'Ready to Save Your Memories?',
   description = 'Install ClipKeeper free and start downloading your GameChanger clips today.',
   buttonText = 'Get ClipKeeper Free',
-  buttonHref = '/',
+  buttonHref = 'https://chromewebstore.google.com/detail/clipkeeper-download-gamec/beelllgidjaklbnacknjkghfibfpjhac',
 }: CTASectionProps) {
   return (
     <div className="bg-green-500 rounded-xl p-8 my-12 text-center text-white">

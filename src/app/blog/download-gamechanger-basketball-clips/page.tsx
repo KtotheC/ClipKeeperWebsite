@@ -107,7 +107,9 @@ export default function BlogPost() {
             It works with all GameChanger sports, including basketball.
           </p>
           <a
-            href="#"
+            href="https://chromewebstore.google.com/detail/clipkeeper-download-gamec/beelllgidjaklbnacknjkghfibfpjhac"
+            target="_blank"
+            rel="noopener noreferrer"
             className="inline-flex items-center gap-2 bg-green-500 text-white px-4 py-2 rounded-full text-sm font-medium mt-4 hover:bg-green-600 transition-colors"
           >
             <Download className="w-4 h-4" />

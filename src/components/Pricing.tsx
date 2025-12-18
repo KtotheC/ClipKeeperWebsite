@@ -19,7 +19,7 @@ const plans = [
       'Chrome extension',
     ],
     cta: 'Install Now',
-    ctaLink: 'https://chrome.google.com/webstore/detail/beelllgidjaklbnacknjkghfibfpjhac',
+    ctaLink: 'https://chromewebstore.google.com/detail/clipkeeper-download-gamec/beelllgidjaklbnacknjkghfibfpjhac',
     highlighted: false,
     plan: null,
   },
